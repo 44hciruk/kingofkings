@@ -14,7 +14,7 @@ export default function MobileMenu() {
   const closeMenu = () => menuRef.current?.removeAttribute("open");
 
   return (
-    <details className="kok-mobile-menu" ref={menuRef} onKeyDown={(event) => event.key === "Escape" && closeMenu()}>
+    <details className="v-mobile-menu" ref={menuRef} onKeyDown={(event) => event.key === "Escape" && closeMenu()}>
       <summary aria-label="メニューを開閉"><span /><span /><span /></summary>
       <nav aria-label="スマートフォンメニュー">
         {links.map(([label, href]) => <a href={href} key={href} onClick={closeMenu}>{label}</a>)}

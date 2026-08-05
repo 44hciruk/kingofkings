@@ -11,27 +11,21 @@ import { eventMeta } from "./data";
 const TIMELINE_TOTAL = 100;
 
 /**
- * Hero: pinned for the length of the scroll-in, matching the reference's
- * long hero pin. While pinned: the centerpiece visual shifts from center
- * toward the left (desktop only — there's no room for that shift on
- * mobile), the prize and meta lines reveal with a staggered rise+fade, and
- * a full-bleed panel wipes up from the bottom over the final stretch,
- * covering the hero before the pin releases and the next section scrolls
- * up from underneath it — the reference's hero-to-next-section transition
- * is a color-block wipe, not a crossfade.
- *
- * The hero logo, prize amount, and date/venue are real, confirmed content
- * (see app/data.ts) and are already visible in the unconditional SSR
- * markup below; this effect only ever adds a temporary hidden/offset state
- * once GSAP has loaded, and only for prize/meta/visual, never the logo
- * itself. If GSAP fails to load, or prefers-reduced-motion is set, nothing
- * here runs and the hero simply renders in its final, fully visible state.
+ * Hero, rebuilt against the reference's actual composition: the centerpiece
+ * visual sits BEHIND the text (not beside it) and drifts from center toward
+ * the left third as content reveals in five progressive fragments — logo,
+ * prize label, prize amount, date, venue — rather than two blocks. The pin
+ * releases into a fast, near-instant color-block wipe (a small fraction of
+ * the timeline), not a slow fade, matching the reference's abrupt cut.
  */
 export default function HeroScene() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const visualTrackRef = useRef<HTMLDivElement | null>(null);
-  const prizeRef = useRef<HTMLDivElement | null>(null);
-  const metaRef = useRef<HTMLDivElement | null>(null);
+  const logoRef = useRef<HTMLHeadingElement | null>(null);
+  const prizeLabelRef = useRef<HTMLSpanElement | null>(null);
+  const prizeAmountRef = useRef<HTMLElement | null>(null);
+  const dateRef = useRef<HTMLSpanElement | null>(null);
+  const venueRef = useRef<HTMLSpanElement | null>(null);
   const wipeRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
@@ -39,10 +33,13 @@ export default function HeroScene() {
 
     const section = sectionRef.current;
     const visual = visualTrackRef.current;
-    const prize = prizeRef.current;
-    const meta = metaRef.current;
+    const logo = logoRef.current;
+    const prizeLabel = prizeLabelRef.current;
+    const prizeAmount = prizeAmountRef.current;
+    const date = dateRef.current;
+    const venue = venueRef.current;
     const wipe = wipeRef.current;
-    if (!section || !visual || !prize || !meta || !wipe) return;
+    if (!section || !visual || !logo || !prizeLabel || !prizeAmount || !date || !venue || !wipe) return;
 
     let cancelled = false;
     let ctx: { revert: () => void } | undefined;
@@ -58,10 +55,11 @@ export default function HeroScene() {
           mm.add({ isDesktop: "(min-width: 768px)", isMobile: "(max-width: 767px)" }, (context) => {
             const { isDesktop } = context.conditions as { isDesktop: boolean; isMobile: boolean };
 
-            gsap.set([prize, meta], { opacity: 0, y: 28, force3D: true });
+            gsap.set(logo, { opacity: 0, y: 24 });
+            gsap.set([prizeLabel, prizeAmount, date, venue], { opacity: 0, y: 18 });
             gsap.set(wipe, { yPercent: 100, force3D: true });
 
-            const pinDistance = () => window.innerHeight * (isDesktop ? 1.5 : 1.7);
+            const pinDistance = () => window.innerHeight * (isDesktop ? 1.6 : 1.8);
 
             const tl = gsap.timeline({
               scrollTrigger: {
@@ -75,18 +73,24 @@ export default function HeroScene() {
               },
             });
 
-            // 0-45%: visual drifts toward the left (desktop only) while
-            // prize, then meta, rise in with a short overlap.
+            // Visual drifts center -> left third across nearly the whole
+            // pin (desktop only — no room for the shift on mobile).
             if (isDesktop) {
-              tl.to(visual, { xPercent: -32, duration: 45, ease: "power1.inOut" }, 0);
+              tl.to(visual, { xPercent: -34, duration: 78, ease: "power1.inOut" }, 0);
             }
-            tl.to(prize, { opacity: 1, y: 0, duration: 20, ease: "power1.out" }, 8);
-            tl.to(meta, { opacity: 1, y: 0, duration: 20, ease: "power1.out" }, 22);
 
-            // 45-72%: hold on the settled hero.
-            // 72-100%: wipe panel covers the hero before the pin releases.
-            tl.to(wipe, { yPercent: 0, duration: 28, ease: "power2.inOut" }, 72);
+            // Five progressive fragments: logo, prize label, amount, date,
+            // venue — each a short, separate beat rather than two blocks.
+            tl.to(logo, { opacity: 1, y: 0, duration: 10, ease: "power1.out" }, 4);
+            tl.to(prizeLabel, { opacity: 1, y: 0, duration: 8, ease: "power1.out" }, 16);
+            tl.to(prizeAmount, { opacity: 1, y: 0, duration: 10, ease: "power1.out" }, 25);
+            tl.to(date, { opacity: 1, y: 0, duration: 8, ease: "power1.out" }, 38);
+            tl.to(venue, { opacity: 1, y: 0, duration: 8, ease: "power1.out" }, 46);
 
+            // Hold on the settled hero, then a fast, near-instant wipe
+            // (small fraction of the timeline) covers it just before the
+            // pin releases.
+            tl.to(wipe, { yPercent: 0, duration: 9, ease: "power4.in" }, 88);
             tl.set({}, {}, TIMELINE_TOTAL);
 
             return () => {
@@ -108,30 +112,28 @@ export default function HeroScene() {
   }, []);
 
   return (
-    <section className="top" id="top" ref={sectionRef}>
-      <div className="inner">
-        <div className="kok-single-hero">
-          <div ref={visualTrackRef} className="kok-hero-visual-track">
-            <HeroVisualSlot />
-          </div>
-          <h1 className="kok-single-hero-title">
-            <picture>
-              <source media="(max-width: 767px)" srcSet="/assets/img/kok-hero-logo-mobile.svg" />
-              <img width="3217" height="4026" src="/assets/img/kok-hero-logo-desktop.svg" alt="KING OF KINGS" />
-            </picture>
-          </h1>
-          <div ref={prizeRef} className="kok-single-hero-prize" aria-label={`${eventMeta.prizeLabel} ${eventMeta.prizeAmount}円`}>
-            <span>{eventMeta.prizeLabel}</span>
-            <strong><small>¥</small>{eventMeta.prizeAmount}</strong>
-          </div>
-          <div ref={metaRef} className="kok-single-hero-meta">
-            <span>{eventMeta.dateLabel}</span>
-            <i aria-hidden="true" />
-            <span>{eventMeta.venueName}</span>
-          </div>
+    <section className="v-hero" id="top" ref={sectionRef}>
+      <div ref={visualTrackRef} className="v-hero__visual-track">
+        <HeroVisualSlot />
+      </div>
+      <div className="v-hero__content">
+        <h1 ref={logoRef} className="v-hero__logo">
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/assets/img/kok-hero-logo-mobile.svg" />
+            <img width="3217" height="4026" src="/assets/img/kok-hero-logo-desktop.svg" alt="KING OF KINGS" />
+          </picture>
+        </h1>
+        <div className="v-hero__prize" aria-label={`${eventMeta.prizeLabel} ${eventMeta.prizeAmount}円`}>
+          <span ref={prizeLabelRef} className="v-hero__prize-label">{eventMeta.prizeLabel}</span>
+          <strong ref={prizeAmountRef} className="v-hero__prize-amount"><small>¥</small>{eventMeta.prizeAmount}</strong>
+        </div>
+        <div className="v-hero__meta">
+          <span ref={dateRef} className="v-hero__meta-date">{eventMeta.dateLabel}</span>
+          <i aria-hidden="true" />
+          <span ref={venueRef} className="v-hero__meta-venue">{eventMeta.venueName}</span>
         </div>
       </div>
-      <div ref={wipeRef} className="kok-hero-wipe" aria-hidden="true" />
+      <div ref={wipeRef} className="v-hero__wipe" aria-hidden="true" />
     </section>
   );
 }
