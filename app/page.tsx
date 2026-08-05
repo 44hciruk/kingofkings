@@ -1,23 +1,18 @@
 import MobileMenu from "./MobileMenu";
 import PlayersScrollReveal from "./PlayersScrollReveal";
 
-const playerImages = [
-  { image: "/assets/img/players/confirmed/player-01.png", confirmed: true },
-  { image: "/assets/img/players/confirmed/player-02.png", confirmed: true },
-  "/assets/img/players/kazunoko.png",
-  "/assets/img/players/bonchan.png",
-  "/assets/img/players/tokido.png",
-  "/assets/img/players/leshar.png",
-  "/assets/img/players/fuudo.png",
-  "/assets/img/players/daigo.png",
-  "/assets/img/players/dogura.png",
-  "/assets/img/players/shuto.png",
-];
+// Entrant roster is not finalized. Every slot renders the same neutral,
+// non-identifiable placeholder (no real person, team mark, or sponsor mark)
+// until the confirmed player list and photos are supplied. The array length
+// is the only thing that drives how many cards render, so swapping in real
+// entrants later is a data change, not a layout/animation change.
+const PLAYER_COUNT = 10;
+const PLACEHOLDER_IMAGE = "/assets/img/players/placeholder-silhouette.svg";
 
-const players = playerImages.map((entry, index) => ({
-  name: "KING",
-  image: typeof entry === "string" ? entry : entry.image,
-  confirmed: typeof entry !== "string" && entry.confirmed,
+const players = Array.from({ length: PLAYER_COUNT }, (_, index) => ({
+  name: "TBA",
+  image: PLACEHOLDER_IMAGE,
+  confirmed: false,
   no: String(index + 1).padStart(2, "0"),
 }));
 

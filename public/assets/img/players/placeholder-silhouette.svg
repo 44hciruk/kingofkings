@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1137 1383" width="1137" height="1383" role="img" aria-label="出場選手 未発表">
+  <!-- Generic, non-identifiable placeholder bust for unannounced entrants.
+       No real person, team mark, or sponsor mark is depicted. -->
+  <rect width="1137" height="1383" fill="#0c0c0c"/>
+  <circle cx="568.5" cy="520" r="230" fill="#2a2a2a"/>
+  <path d="M568.5 700c-235 0-430 190-430 430v253h860v-253c0-240-195-430-430-430z" fill="#2a2a2a"/>
+</svg>
