@@ -35,7 +35,7 @@ button, a { font:inherit; touch-action:manipulation; }
 .livepocket-logo-button img { display:block; width:92%; height:auto; }
 .header-ticket img { width:88%; max-height:82%; object-fit:contain; }
 
-.kok-main .top { min-height:calc(100svh - 6.2rem); padding:min(17.7vw,340px) 0 min(16.6vw,320px); }
+.kok-main .top { position:relative; min-height:calc(100svh - 6.2rem); padding:min(17.7vw,340px) 0 min(16.6vw,320px); overflow:hidden; }
 .kok-main .top:before { content:none; }
 .kok-main .top .inner { position:relative; }
 .kok-main .top h1 { z-index:2; }
@@ -682,4 +682,99 @@ button, a { font:inherit; touch-action:manipulation; }
   }
   .videoBg:before { opacity:.52!important; }
   .videoBg video { display:none!important; }
+}
+
+/* HeroScene: centerpiece visual slot (temporary placeholder, see
+   HeroVisualSlot) positioned behind the hero text, and the curtain-wipe
+   panel that covers the hero before its pin releases. */
+.kok-hero-visual-track {
+  position:absolute;
+  z-index:-1;
+  top:50%;
+  left:50%;
+  width:clamp(9rem,20vw,16rem);
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.kok-hero-visual { position:relative; width:100%; aspect-ratio:1137/1383; perspective:60rem; }
+.kok-hero-visual__spin {
+  width:100%;
+  height:100%;
+  transform-style:preserve-3d;
+  animation:kok-hero-visual-spin 16s linear infinite;
+}
+.kok-hero-visual__card {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  backface-visibility:hidden;
+  filter:drop-shadow(0 1.5rem 3rem #000a);
+}
+@keyframes kok-hero-visual-spin {
+  from { transform:rotateY(0deg); }
+  to { transform:rotateY(360deg); }
+}
+.kok-hero-wipe {
+  position:absolute;
+  z-index:10;
+  inset:0;
+  background:linear-gradient(180deg,#000 0%,#0c0c0c 55%,#000 100%);
+  border-top:2px solid var(--kok-gold);
+  pointer-events:none;
+}
+@media (prefers-reduced-motion:reduce) {
+  .kok-hero-visual__spin { animation:none; }
+}
+@media screen and (max-width:767px) {
+  .kok-hero-visual-track { top:32%; width:clamp(6rem,26vw,9rem); }
+}
+
+/* BrandStatementScene */
+.kok-brand-statement {
+  position:relative;
+  display:grid;
+  place-items:center;
+  min-height:100svh;
+  padding:4rem 1.5rem;
+  text-align:center;
+  background:#000;
+}
+.kok-brand-statement__name {
+  color:#fff;
+  font:400 clamp(3rem,10vw,9rem)/.9 "Big Noodle Titling",Anton,sans-serif;
+  letter-spacing:.03em;
+  text-shadow:0 .1em .4em #0008;
+}
+.kok-brand-statement__tagline {
+  margin-top:clamp(1rem,2.5vw,2rem);
+  color:var(--kok-gold);
+  font:400 clamp(1.05rem,2.1vw,1.9rem)/1.5 source-hans-japanese,sans-serif;
+}
+@media screen and (max-width:767px) {
+  .kok-brand-statement { min-height:0; padding:5rem 1.25rem; }
+}
+
+/* RulesScene: short-heading chips revealed while pinned, ahead of the full
+   RulesDetails accordion. */
+.kok-rule-chips {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:.85rem;
+  margin:0 0 2.5rem;
+  padding-left:2rem;
+}
+.kok-rule-chip {
+  display:flex;
+  flex-direction:column;
+  gap:.35rem;
+  padding:1.1rem 1rem;
+  border:1px solid #e7ba373d;
+  background:#0e0e0ecc;
+}
+.kok-rule-chip span { color:var(--kok-gold); font:400 1.4rem/1 "Bebas Neue",Anton,sans-serif; }
+.kok-rule-chip strong { color:#fff; font-size:.95rem; }
+.kok-rule-chip small { color:#9c968a; font-size:.7rem; letter-spacing:.12em; }
+@media screen and (max-width:767px) {
+  .kok-rule-chips { grid-template-columns:repeat(2,minmax(0,1fr)); gap:.6rem; padding-left:1rem; margin-bottom:1.5rem; }
+  .kok-rule-chip { padding:.85rem .75rem; }
 }
