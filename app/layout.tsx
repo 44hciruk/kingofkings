@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./vanta-scenes.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kingofkings.jp"),

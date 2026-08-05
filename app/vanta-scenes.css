@@ -1,0 +1,4 @@
+/* Vanta-first rebuild: new scene styles, isolated from legacy app/globals.css
+   section rules (kok-* prefixed) which remain in place until their replacement
+   scenes are verified, then get removed in the final cleanup step. All new
+   selectors here use a v- prefix so nothing collides with the legacy ones. */
