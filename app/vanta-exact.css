@@ -8,7 +8,8 @@
    until the approved color/font conversion stages. */
 
 :root {
-  --v2-bg: #000;
+  /* Measured (HAR/MHTML): --color-hero-bg is #010100, not flat #000. */
+  --v2-bg: #010100;
   --v2-fg: #fff;
   --v2-muted: #8a8a8e;
   --v2-dim: #56565b;
@@ -18,7 +19,16 @@
   --v2-card-border: #ffffff1a;
   --v2-pill-bg: #fff;
   --v2-pill-fg: #0a0a0a;
-  --v2-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --v2-font: var(--font-jakarta), "Plus Jakarta Sans Fallback", system-ui, sans-serif;
+
+  /* Measured (HAR/MHTML) design tokens, carried forward for later sections. */
+  --v2-plate-bg: #F4F4F6;
+  --v2-plate-ink: #0B0B0E;
+  --v2-plate-label: #5B5BD6;
+  --v2-radius-lg: .5rem;
+  --v2-radius-xl: .75rem;
+  --v2-radius-3xl: 1.5rem;
+  --v2-breakpoint-wide: 1600px;
 }
 
 .v2-site {
@@ -41,7 +51,10 @@
    secondary "edition" pill (appears from the Hero onward).
    ============================================================ */
 .v2-header {
-  position: fixed;
+  /* Measured live: nav is `position:absolute`, not `fixed` — it only reads
+     as persistent because it is nested inside Hero's own pinned wrapper
+     (below), and it scrolls away permanently once that pin releases. */
+  position: absolute;
   top: 1.75rem;
   left: 50%;
   transform: translateX(-50%);
@@ -53,6 +66,9 @@
   pointer-events: none;
 }
 .v2-edition-pill {
+  /* Unlike nav, the persistent "Edition — Buy" pill is not contradicted by
+     live measurement (not part of the pin-detection sweep) — kept fixed,
+     appearing during the Hero reveal and persisting afterward. */
   position: fixed;
   top: 1.5rem;
   right: 3rem;
@@ -139,6 +155,9 @@
   line-height: 1.25;
   letter-spacing: -.01em;
 }
+/* Measured: each phrase is its own inline-block span so opacity/translateY
+   can stagger independently rather than fading the whole body at once. */
+.v2-hero-phrase { display: inline-block; }
 
 @media screen and (max-width: 767px) {
   .v2-hero-heading { top: 6.5rem; left: 1.25rem; font-size: 1.4rem; }
@@ -379,21 +398,24 @@
 }
 
 /* ============================================================
-   ShowcaseScene — device
+   CloseSection — "APPLIED": device demo, pricing, and testimonial
+   as one continuous scrolling unit (measured: closeSection's document
+   geometry contiguously contains all three, no gap between them —
+   an earlier build split this into two separate pinned scenes).
    ============================================================ */
-.v2-showcase {
+.v2-close { position: relative; background: #000; }
+.v2-close__device-region {
   position: relative;
   height: 100svh;
   overflow: hidden;
-  background: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0 5vw;
 }
-.v2-showcase__eyebrow { position: absolute; top: 30%; text-align: center; }
-.v2-showcase__heading {
+.v2-close__eyebrow { position: absolute; top: 30%; text-align: center; }
+.v2-close__heading {
   position: absolute;
   top: calc(30% + 2rem);
   margin: 0;
@@ -428,14 +450,11 @@
 }
 
 @media screen and (max-width: 767px) {
-  .v2-showcase__eyebrow, .v2-showcase__heading { position: static; margin-bottom: 1.5rem; }
-  .v2-showcase { padding: 6rem 1.25rem; height: auto; min-height: 100svh; }
+  .v2-close__eyebrow, .v2-close__heading { position: static; margin-bottom: 1.5rem; }
+  .v2-close__device-region { padding: 6rem 1.25rem; height: auto; min-height: 100svh; }
 }
 
-/* ============================================================
-   PricingScene
-   ============================================================ */
-.v2-pricing {
+.v2-close__pricing-region {
   position: relative;
   min-height: 100svh;
   padding: 8rem 5vw 6rem;
@@ -484,7 +503,7 @@
 .v2-testimonial--pricing .v2-testimonial__attr { justify-content: center; }
 
 @media screen and (max-width: 767px) {
-  .v2-pricing { padding: 6rem 1.25rem 4rem; }
+  .v2-close__pricing-region { padding: 6rem 1.25rem 4rem; }
   .v2-pricing__tiers { flex-direction: column; align-items: center; }
 }
 

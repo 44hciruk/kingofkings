@@ -12,7 +12,7 @@ const TIMELINE_TOTAL = 100;
  * releases into a testimonial. Neutral abstract-shape placeholder tiles
  * stand in for the reference's own material renders.
  */
-export default function LibraryScene() {
+export default function LibrarySection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);

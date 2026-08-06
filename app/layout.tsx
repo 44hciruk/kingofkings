@@ -1,6 +1,17 @@
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import "./vanta-exact.css";
+
+// Measured (HAR/MHTML): the reference loads Plus Jakarta Sans, weights
+// 400/500/600/700, via next/font — real, freely-usable Google Font, not a
+// guessed system-font stack.
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kingofkings.jp"),
@@ -21,5 +32,9 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="ja"><body>{children}</body></html>;
+  return (
+    <html lang="ja" className={plusJakartaSans.variable}>
+      <body>{children}</body>
+    </html>
+  );
 }

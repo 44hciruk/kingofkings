@@ -13,7 +13,7 @@ const TIMELINE_TOTAL = 100;
  * (the reference uses a swipe carousel on mobile — approximated here as a
  * simple stacked reveal, a documented simplification).
  */
-export default function RecipeScene() {
+export default function RecipeSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const bodyRef = useRef<HTMLParagraphElement | null>(null);

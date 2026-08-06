@@ -8,7 +8,10 @@ export const brand = { name: "BRAND", editionLabel: "Objects¹ — Edition 1", b
 
 export const hero = {
   eyebrow: "Objects",
-  bodyLines: ["Placeholder assets for designers,", "builders, and ", { accent: "creative" }, " teams."],
+  // Split into short phrase chunks so each can stagger-reveal on its own
+  // (measured: the reference reveals its Hero body copy as several
+  // independently-timed phrase spans, not one single fade-in block).
+  bodyPhrases: ["Placeholder assets", "for designers,", "builders,", "and ", { accent: "creative" }, "teams."],
 };
 
 export const pitch = {
@@ -54,6 +57,10 @@ export const recipe = {
 export const showcase = {
   heading: "A few Objects, on real work.",
   deviceLabel: "Design, build & deploy",
+  // Measured: desktop copy implies the demo plays once automatically, then
+  // offers a replay ("Want another look? Replay"); mobile requires an
+  // explicit first tap ("Play demo"). Desktop-only for this checkpoint.
+  replayLabel: "Want another look? Replay",
 };
 
 export const pricing = {

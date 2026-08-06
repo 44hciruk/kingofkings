@@ -1,24 +1,20 @@
-import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
-import HeroScene from "./HeroScene";
-import PitchScene from "./PitchScene";
-import LibraryScene from "./LibraryScene";
-import RecipeScene from "./RecipeScene";
-import ShowcaseScene from "./ShowcaseScene";
-import PricingScene from "./PricingScene";
-import FaqScene from "./FaqScene";
+import HeroSection from "./HeroSection";
+import PitchSection from "./PitchSection";
+import LibrarySection from "./LibrarySection";
+import RecipeSection from "./RecipeSection";
+import CloseSection from "./CloseSection";
+import FaqSection from "./FaqSection";
 
 export default function Home() {
   return (
     <div className="v2-site">
-      <SiteHeader />
-      <HeroScene />
-      <PitchScene />
-      <LibraryScene />
-      <RecipeScene />
-      <ShowcaseScene />
-      <PricingScene />
-      <FaqScene />
+      <HeroSection />
+      <PitchSection />
+      <LibrarySection />
+      <RecipeSection />
+      <CloseSection />
+      <FaqSection />
       <SiteFooter />
     </div>
   );

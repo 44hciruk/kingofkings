@@ -12,7 +12,7 @@ const TIMELINE_TOTAL = 100;
  * rings, a second dark card) staggering in beneath it. Not pinned in the
  * reference — a plain scroll-linked reveal as the section enters view.
  */
-export default function PitchScene() {
+export default function PitchSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   const bodyRef = useRef<HTMLParagraphElement | null>(null);

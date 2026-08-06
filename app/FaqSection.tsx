@@ -3,7 +3,7 @@ import { faq } from "./vantaCloneContent";
 // Accessible native <details>/<summary> accordion — always present, no
 // scroll-gated reveal, matching how the reference's FAQ list itself is
 // just a plain accordion (not part of a pinned mechanic).
-export default function FaqScene() {
+export default function FaqSection() {
   return (
     <section className="v2-faq" id="faq">
       <span className="v2-section-eyebrow v2-faq__eyebrow">{faq.heading}</span>
