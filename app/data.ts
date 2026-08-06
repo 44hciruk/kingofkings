@@ -29,6 +29,27 @@ export const eventMeta = {
   },
 };
 
+// ConvictionScene: two facets of the same brand statement, per approved
+// mapping decision (INVITATIONAL / PRIZE), not a literal 1:1 translation of
+// the reference's own two card labels.
+export const convictionCards = [
+  {
+    label: "INVITATIONAL",
+    body: "各メーカーから選抜されたプレイヤーが集う、招待制コンテスト。",
+  },
+  {
+    label: "¥1,000,000 PRIZE",
+    body: "頂点に立つ、ただ一人へ。優勝賞金100万円。",
+  },
+];
+
+// LibraryScene: factual statement standing in for the reference's
+// testimonial slot (no real testimonial exists — see fidelity report).
+export const librarySceneStatement = {
+  eyebrow: "SELECTED PLAYERS. ONE KING.",
+  body: "招待されたプレイヤーの中から、ただ一人のKINGが決まる。",
+};
+
 export const schedule: ScheduleItem[] = [
   { time: "14:00", ja: "一般入場", en: "DOOR OPEN" },
   { time: "17:30", ja: "ゲストパフォーマンス", en: "GUEST PERFORMANCE" },

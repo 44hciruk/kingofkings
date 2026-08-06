@@ -17,6 +17,14 @@ export function loadGsap() {
         const gsap = gsapModule.default;
         const { ScrollTrigger } = scrollTriggerModule;
         gsap.registerPlugin(ScrollTrigger);
+
+        // Custom display fonts use font-display:swap, so headings can
+        // reflow (fallback -> webfont) after a pin's start/end have already
+        // been cached from the fallback-font layout. document.fonts.ready
+        // fires whenever that swap actually happens, so refresh once then
+        // to resync every ScrollTrigger with the final, stable layout.
+        document.fonts?.ready.then(() => ScrollTrigger.refresh());
+
         return { gsap, ScrollTrigger };
       },
     );
