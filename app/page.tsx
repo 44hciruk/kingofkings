@@ -3,6 +3,8 @@ import SiteFooter from "./SiteFooter";
 import HeroScene from "./HeroScene";
 import ConvictionScene from "./ConvictionScene";
 import LibraryScene from "./LibraryScene";
+import RecipeScene from "./RecipeScene";
+import ShowcaseScene from "./ShowcaseScene";
 import TicketScene from "./TicketScene";
 import RulesScene from "./RulesScene";
 import AboutScene from "./AboutScene";
@@ -19,6 +21,8 @@ export default function Home() {
             <HeroScene />
             <ConvictionScene />
             <LibraryScene />
+            <RecipeScene />
+            <ShowcaseScene />
             <TicketScene />
             <RulesScene />
             <AboutScene />

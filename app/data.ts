@@ -50,6 +50,27 @@ export const librarySceneStatement = {
   body: "招待されたプレイヤーの中から、ただ一人のKINGが決まる。",
 };
 
+// RecipeScene: the confirmed JUDGING category (rulesContent.tsx, category
+// 02) re-shaped as a one-row-at-a-time "equation" reveal instead of the
+// three-column grid RulesScene/RulesDetails use — same confirmed criteria
+// text, no invented categories or scores.
+export const judgingCategories = [
+  { en: "TECHNICAL", judgeCount: "2名", criteria: ["難易度", "精度", "構成", "完成度", "リスク", "コントロール"] },
+  { en: "PERFORMANCE", judgeCount: "2名", criteria: ["音楽との調和", "表現力", "構成", "伝達力", "演技の流れ"] },
+  { en: "FUTURE IMPACT", judgeCount: "2名", criteria: ["独創性", "新しい価値観", "シーンへの影響", "次世代への影響"] },
+];
+
+// Same confirmed line as ruleCategories[2] (SCORING).summary in rulesContent.tsx.
+export const scoringSummary = "6名のジャッジによる順位点の合計で決定。";
+
+// ShowcaseScene: the same two confirmed venue photographs AboutScene's
+// gallery already uses, cycling inside a single showcase object instead of
+// a static two-up gallery.
+export const venueImages = [
+  { src: "/assets/img/mowl-osaka-01.jpg", alt: "mowl OSAKAのステージとウォールアート", width: 3578, height: 2013 },
+  { src: "/assets/img/mowl-osaka-02.jpg", alt: "mowl OSAKAの外観とウォールアート", width: 4032, height: 2268 },
+];
+
 export const schedule: ScheduleItem[] = [
   { time: "14:00", ja: "一般入場", en: "DOOR OPEN" },
   { time: "17:30", ja: "ゲストパフォーマンス", en: "GUEST PERFORMANCE" },
