@@ -6,8 +6,8 @@ import LibraryScene from "./LibraryScene";
 import RecipeScene from "./RecipeScene";
 import ShowcaseScene from "./ShowcaseScene";
 import TicketScene from "./TicketScene";
-import RulesScene from "./RulesScene";
-import AboutScene from "./AboutScene";
+import StatementBand from "./StatementBand";
+import DetailScene from "./DetailScene";
 
 export default function Home() {
   return (
@@ -24,8 +24,8 @@ export default function Home() {
             <RecipeScene />
             <ShowcaseScene />
             <TicketScene />
-            <RulesScene />
-            <AboutScene />
+            <StatementBand />
+            <DetailScene />
           </div>
           <a className="backTop" href="#top" aria-label="ページ上部へ戻る">
             <img className="backTop-mark backTop-mark--top" width="270" height="499" src="/assets/img/kok-k-piece.svg" alt="" />

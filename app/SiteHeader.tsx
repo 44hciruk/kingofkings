@@ -15,8 +15,7 @@ export default function SiteHeader() {
       <nav className="v-header__nav" aria-label="サイト内メニュー">
         <a href="#ticket">TICKET</a>
         <a href="#players">PLAYERS</a>
-        <a href="#rules">RULES</a>
-        <a href="#about">ABOUT</a>
+        <a href="#detail">DETAILS</a>
       </nav>
       <a className="v-header__cta" href={eventMeta.ticketUrl} target="_blank" rel="noreferrer" aria-label="LivePocket チケット販売ページを開く">
         TICKET<span aria-hidden="true">↗</span>

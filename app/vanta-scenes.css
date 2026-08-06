@@ -454,3 +454,123 @@
 @media screen and (max-width: 767px) {
   .v-showcase { padding: 6rem 1.25rem; min-height: 0; }
 }
+
+/* ============================================================
+   TicketScene — bridge line + single card, scale/glow entrance
+   ============================================================ */
+.v-ticket {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  padding: 7rem 1.5rem;
+  background: #000;
+  box-sizing: border-box;
+}
+.v-ticket__inner { display: flex; flex-direction: column; align-items: center; gap: 2rem; text-align: center; }
+.v-ticket__bridge {
+  color: var(--kok-gold);
+  font: 400 .95rem/1 "Bebas Neue", Anton, sans-serif;
+  letter-spacing: .15em;
+}
+.v-ticket__card {
+  width: min(30rem, 90vw);
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid #e7ba374d;
+  border-radius: .75rem;
+  background: #0b0b0bf5;
+  box-shadow: 0 0 4rem .5rem #e7ba3733;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.v-ticket__label { color: #8e7850; font: 400 .8rem/1 Anton, sans-serif; letter-spacing: .1em; }
+.v-ticket__headline { color: #fff; font: 400 clamp(1.4rem, 3vw, 1.9rem)/1.3 source-hans-japanese, sans-serif; }
+.v-ticket__copy { color: #c7c1b6; font: 400 .9rem/1.7 source-hans-japanese, sans-serif; }
+.v-ticket__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: .5rem;
+  padding: .9rem 2.2rem;
+  border-radius: 999px;
+  background: var(--kok-gold);
+  color: #000;
+  font: 400 .95rem/1 "Bebas Neue", Anton, sans-serif;
+  letter-spacing: .08em;
+  text-decoration: none;
+}
+
+/* ============================================================
+   StatementBand — full-bleed factual transitional statement
+   ============================================================ */
+.v-statement {
+  display: grid;
+  place-items: center;
+  min-height: 60svh;
+  padding: 6rem 1.5rem;
+  background: #000;
+  box-sizing: border-box;
+}
+.v-statement__text {
+  max-width: 46rem;
+  text-align: center;
+  color: #fff;
+  font: 400 clamp(1.2rem, 2.6vw, 1.7rem)/1.7 source-hans-japanese, sans-serif;
+}
+
+@media screen and (max-width: 767px) {
+  .v-statement { min-height: 40svh; padding: 4rem 1.25rem; }
+}
+
+/* ============================================================
+   DetailScene — accessible accordion: event overview + full rules
+   ============================================================ */
+.v-detail {
+  position: relative;
+  padding: 7rem 1.5rem 10rem;
+  background: #000;
+  box-sizing: border-box;
+}
+.v-detail__inner { max-width: 56rem; margin: 0 auto; }
+.v-detail__eyebrow {
+  text-align: center;
+  color: var(--kok-gold);
+  font: 400 .85rem/1 "Bebas Neue", Anton, sans-serif;
+  letter-spacing: .3em;
+  margin-bottom: 2.5rem;
+}
+.v-detail__event {
+  margin-bottom: .75rem;
+  border: 1px solid #e7ba373d;
+  border-radius: .5rem;
+  background: #0b0b0bf0;
+}
+.v-detail__event > summary {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 1.1rem 1.4rem;
+  cursor: pointer;
+  color: #fff;
+  list-style: none;
+}
+.v-detail__event > summary::-webkit-details-marker { display: none; }
+.v-detail__event > summary span { color: #8e7850; font: 400 .8rem/1 Anton, sans-serif; }
+.v-detail__event > summary strong { font: 400 1rem/1 source-hans-japanese, sans-serif; letter-spacing: .05em; }
+.v-detail__event-body { padding: 0 1.4rem 1.5rem; }
+.v-detail__event-body dl { margin: 0; }
+.v-detail__event-body dl > div { padding: 1rem 0; border-top: 1px dotted #ffffff1f; }
+.v-detail__event-body dl > div:first-child { border-top: 0; }
+.v-detail__event-body dt { color: #8e7850; font: 400 .8rem/1 Anton, sans-serif; letter-spacing: .08em; margin-bottom: .5rem; }
+.v-detail__event-body dd { margin: 0; color: #d8d8d8; font: 400 .9rem/1.7 source-hans-japanese, sans-serif; }
+.v-detail__event-body dd p { margin: 0 0 .4rem; }
+.v-detail__event-body dd p:last-child { margin-bottom: 0; }
+.v-detail__map { margin-top: 1rem; }
+.v-detail__map iframe { width: 100%; height: 16rem; border: 1px solid #ffffff1f; border-radius: .4rem; }
+.v-detail__map a { display: inline-block; margin-top: .6rem; color: var(--kok-gold); font: 400 .85rem/1 Anton, sans-serif; text-decoration: none; }
+
+@media screen and (max-width: 767px) {
+  .v-detail { padding: 5rem 1.25rem 6rem; }
+}

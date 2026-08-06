@@ -5,8 +5,7 @@ import { useRef } from "react";
 const links = [
   ["TICKET", "#ticket"],
   ["PLAYERS", "#players"],
-  ["RULES", "#rules"],
-  ["ABOUT", "#about"],
+  ["DETAILS", "#detail"],
 ];
 
 export default function MobileMenu() {
