@@ -56,10 +56,12 @@ export default function LibraryScene() {
             },
           });
 
-          // 0-45%: tile grid fans in behind, staggered.
+          // 0-45%: tile grid fans in behind, staggered. Reference's own
+          // library grid assembles in a scattered order, not row-by-row —
+          // "random" reads closer to that than "start".
           tl.to(tiles, {
             opacity: 1, scale: 1, duration: 40, ease: "power1.out",
-            stagger: { each: 2.6, from: "start", grid: "auto" },
+            stagger: { each: 2.6, from: "random", grid: "auto" },
           }, 0);
           // 40-65%: foreground schedule card holds in.
           tl.to(card, { opacity: 1, y: 0, duration: 20, ease: "power1.out" }, 42);
