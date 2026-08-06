@@ -1,0 +1,760 @@
+@import "./kok-base.css";
+
+@font-face { font-family:"Big Noodle Titling"; src:url("/fonts/big-noodle-titling.ttf") format("truetype"); font-style:normal; font-weight:400; font-display:swap; }
+@font-face { font-family:"Bebas Neue"; src:url("/fonts/bebas-neue-regular.ttf") format("truetype"); font-style:normal; font-weight:400; font-display:swap; }
+
+:root { --kok-gold:#e7ba37; --kok-red:#ba1d22; --kok-green:#2a475e; --kok-black:#050505; --kok-type-meta:12px; --kok-type-label:clamp(14px,1vw,18px); --kok-type-eyebrow:clamp(16px,1.7vw,32px); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; color-scheme:dark; }
+body { background:#000; }
+button,a { font:inherit; touch-action:manipulation; }
+[id] { scroll-margin-top:7rem; }
+.kok-skip-link { position:fixed; z-index:100; top:.75rem; left:.75rem; padding:.75rem 1rem; color:#050505; background:var(--kok-gold); border-radius:.35rem; transform:translateY(-200%); transition:transform .2s; }
+.kok-skip-link:focus-visible { transform:translateY(0); }
+.kok-site a:focus-visible { outline:2px solid var(--kok-gold); outline-offset:4px; }
+.kok-section-heading,.kok-ticket-panel h3,.rule-flow h3,.kok-main .about h4 { text-wrap:balance; }
+.kok-ticket-copy,.kok-main .about .td { overflow-wrap:anywhere; }
+.kok-timeline time,.kok-timeline .seq { font-variant-numeric:tabular-nums; }
+.kok-site { position:relative; min-height:100%; background:#0000; }
+.stage { position:relative; z-index:1; }
+.kok-main { background:transparent; }
+.kok-main .container { background:transparent; }
+
+.kok-header { position:relative; z-index:20; display:flex; align-items:center; min-height:6.2rem; padding:.8rem 3.5rem; background:#050505f2; border-bottom:1px solid #ffffff2b; box-shadow:0 1rem 3rem #0009; }
+.kok-brand { display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; text-decoration:none; }
+.kok-brand-logotype { width:12rem; height:auto; }
+.kok-logotype-tagline { display:block; color:#fff; font:400 .62rem/1.12 "Bebas Neue",Anton,sans-serif; letter-spacing:.2em; text-align:center; white-space:nowrap; }
+.kok-header-tagline { margin-top:.25rem; font-size:.5rem; letter-spacing:.17em; }
+.kok-header nav { display:flex; align-items:center; gap:2.8rem; margin-left:auto; }
+.kok-header nav a { color:#fff; font:400 .92rem/1 Anton,sans-serif; letter-spacing:.14em; opacity:.72; transition:.25s; }
+.kok-header nav a:hover { opacity:1; color:var(--kok-gold); }
+.kok-mobile-menu { display:none; }
+.header-ticket { width:9rem; min-width:9rem; height:3rem; margin-left:3rem; flex:0 0 9rem; }
+.livepocket-logo-button { display:flex; align-items:center; justify-content:center; overflow:hidden; background:#fff; border:1px solid #e4e4e4; border-radius:.45rem; box-shadow:0 .35rem 1rem #0005; transition:transform .2s,box-shadow .2s; }
+.livepocket-logo-button:hover { transform:translateY(-2px); box-shadow:0 .55rem 1.35rem #0008; }
+.livepocket-logo-button img { display:block; width:92%; height:auto; }
+.header-ticket img { width:88%; max-height:82%; object-fit:contain; }
+
+.kok-main .top { min-height:calc(100svh - 6.2rem); padding:min(17.7vw,340px) 0 min(16.6vw,320px); }
+.kok-main .top:before { content:none; }
+.kok-main .top .inner { position:relative; }
+.kok-main .top h1 { z-index:2; }
+.kok-main .top h1 .prize { top:-37%; width:36%; color:#fff; }
+.kok-main .top h1 .prize .emblem { display:flex; flex-direction:column; align-items:center; }
+.kok-main .top h1 .prize .emblem>span { color:#dbc58e; font:400 .75rem/1 Anton,sans-serif; letter-spacing:.28em; }
+.kok-main .top h1 .prize .emblem>strong { margin-top:.35rem; font:400 min(4.16vw,80px)/.95 Anton,sans-serif; letter-spacing:.03em; text-shadow:0 .35rem 1.5rem #000; }
+.kok-main .top h1 .prize .emblem small { font-size:.45em; vertical-align:.55em; margin-right:.15em; }
+.kok-main .top h1 .prize .sponsor { width:auto; margin:.65rem 0 0; padding:.45rem 1.2rem; color:#d5c293; border-block:1px solid #b99a5666; font-size:.63rem; letter-spacing:.18em; }
+.kok-presented-hero { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:min(5.2vw,100px); }
+.kok-presented-hero small { color:#b9a77c; font:400 .62rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.25em; }
+.kok-presented-hero strong { margin-top:.5rem; color:#fff; font:700 min(2.6vw,50px)/.8 Arial,sans-serif; letter-spacing:-.07em; }
+.kok-presented-hero sup,.kok-presented sup { margin-left:.08em; font-size:.3em; vertical-align:top; letter-spacing:0; }
+.kok-main .top h1 .logo.qualifiers { bottom:0; left:8.5%; }
+.kok-main .top h1 .logo.grandFinal { right:8.5%; }
+.kok-main .top h1 .logo { width:25%; color:#fff; }
+.kok-main .top h1 .logo .kok-event-logo { display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; min-height:min(8vw,9rem); margin-bottom:1.25rem; }
+.kok-main .top h1 .logo .kok-event-logo .kok-hero-logotype { width:100%; height:auto; }
+.kok-hero-tagline { margin-top:.5rem; font-size:min(.76vw,.9rem); text-shadow:0 .2rem .8rem #000; }
+.kok-mark { display:grid; place-items:center; width:100%!important; }
+.kok-mark span { display:grid; place-items:center; width:min(7.2vw,138px); aspect-ratio:1; color:#10100e; border-radius:50%; background:radial-gradient(circle at 36% 28%,#ffe8aa,#b98629 58%,#4b2d08); border:.25rem solid #efd692; box-shadow:0 0 0 .35rem #090806,0 0 0 .45rem #bc9349,0 1rem 3rem #000; font:4.5rem/1 Georgia,serif; }
+.kok-main .top h1 .logo .title { display:flex; flex-direction:column; align-items:center; }
+.kok-main .top h1 .logo .title small { margin-bottom:.4rem; color:#bca97d; font:400 .65rem/1 Anton,sans-serif; letter-spacing:.22em; }
+.kok-main .top h1 .logo .title strong { color:#fff; font:400 min(2.18vw,42px)/1 Anton,sans-serif; letter-spacing:.08em; text-shadow:0 .3rem 1.3rem #000; }
+.main-event-logo { position:absolute; z-index:3; left:50%; top:25%; transform:translate(-50%,-50%); width:40%; text-align:center; color:#fff; text-shadow:0 .5rem 1.8rem #000; }
+.main-event-logo .logo-rule { display:block; width:75%; height:1px; margin:0 auto 1rem; background:linear-gradient(90deg,transparent,#d8b55e,transparent); }
+.main-event-logo small { color:#dfca99; font:400 .7rem/1 Anton,sans-serif; letter-spacing:.3em; }
+.main-event-logo strong { display:block; margin:.7rem -30% 0; color:#f0d79a; font:400 min(5.2vw,100px)/.83 Anton,sans-serif; letter-spacing:.02em; }
+.main-event-logo strong em { color:#fff; font:italic .28em Georgia,serif; vertical-align:.65em; }
+.main-event-logo p { margin:1rem 0 0!important; color:#fff; font:400 .9rem/1 Anton,sans-serif!important; letter-spacing:.22em; }
+.top-side-seal { position:absolute; z-index:4; top:2rem; right:2rem; display:flex; flex-direction:column; justify-content:center; width:min(12vw,230px); aspect-ratio:1; color:#fff; background:#7d0c14e6; border:.14rem solid #dfbd70; outline:.35rem solid #0007; transform:rotate(6deg); text-align:center; clip-path:polygon(50% 0,61% 8%,75% 4%,83% 17%,96% 25%,92% 39%,100% 50%,92% 61%,96% 75%,83% 83%,75% 96%,61% 92%,50% 100%,39% 92%,25% 96%,17% 83%,4% 75%,8% 61%,0 50%,8% 39%,4% 25%,17% 17%,25% 4%,39% 8%); }
+.top-side-seal span { font:400 min(4vw,76px)/.8 Anton,sans-serif; }
+.top-side-seal small { margin-top:.45rem; font:400 min(.72vw,14px)/1.2 Anton,sans-serif; letter-spacing:.13em; }
+.kok-main .top .events { position:relative; z-index:3; }
+.kok-main .top .events>div { padding:2.2rem 1.5rem; background:#0006; border-block:1px solid #c49d4e55; backdrop-filter:blur(5px); }
+.kok-main .top .events .event_title { min-height:7rem; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; }
+.kok-main .top .events .event_title .ghost-label { position:absolute; color:#d6af4d1f; font:400 min(5.2vw,100px)/1 Anton,sans-serif; letter-spacing:.05em; }
+.kok-main .top .events .event_title strong { position:relative; color:#f5db98; font:400 min(2.34vw,45px)/1 Anton,sans-serif; letter-spacing:.08em; }
+.kok-main .top .events .event_title small { position:relative; margin-top:.75rem; color:#fff; font-size:.72rem; letter-spacing:.2em; }
+
+.kok-section-heading { display:flex; flex-direction:column; justify-content:center; width:fit-content!important; height:auto!important; min-height:min(9.375vw,180px); margin:0 auto 10rem!important; filter:none!important; text-align:center; }
+.kok-section-heading>strong { display:block; color:#fff; font:400 min(6.25vw,120px)/.85 Anton,sans-serif; letter-spacing:.08em; text-shadow:0 .04em .08em #0005; }
+.kok-section-heading:before,.kok-section-heading:after { content:""; display:block; width:70%; height:1px; margin:.9rem auto; background:linear-gradient(90deg,transparent,#cfaa57,transparent); }
+.kok-main section .kok-section-heading span { margin:0; font-size:1.35rem; }
+
+.kok-time-wrap { position:relative; }
+.kok-time-wrap h3 { margin-bottom:1.2rem!important; color:#f1d58e!important; }
+.schedule-location { margin:0 0 5rem!important; text-align:center; color:#a9956e; letter-spacing:.16em; }
+.kok-timeline { max-width:65rem; margin:0 auto; border-block:1px solid #805d24; }
+.kok-timeline li { display:grid; grid-template-columns:4rem 11rem 1fr; align-items:center; min-height:7.5rem; border-bottom:1px dotted #7e6c49; }
+.kok-timeline li:last-child { border:0; }
+.kok-timeline .seq { color:#8e7850; font:400 1.35rem/1 Anton,sans-serif; }
+.kok-timeline time { color:#fff; font:400 3.1rem/1 Anton,sans-serif; }
+.kok-timeline li>div { display:flex; flex-direction:column; padding-left:3rem; border-left:1px solid #8a6b35; }
+.kok-timeline li strong { font-size:1.25rem; }.kok-timeline li small { margin-top:.5rem; color:#b8a476; font:400 .7rem/1 Anton,sans-serif; letter-spacing:.2em; }
+
+.kok-main .team { padding:15rem 0 25rem; }
+.kok-tabs ul { transform:scale(1.2)!important; }
+.kok-tabs li.active button { border:1px solid #d0aa56!important; color:#f1d58e; }
+.team-intro { width:85%; max-width:1200px; margin:5rem auto 4rem; text-align:center; color:#d4cec3; }
+.team-info__body { width:85%; min-width:0; max-width:1500px; margin:0 auto; }
+.kok-player-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); column-gap:24px; row-gap:36px; width:100%; margin:auto; }
+.kok-player { position:relative; aspect-ratio:1/1.5; perspective:var(--kok-player-flip-perspective,1500px); }
+.kok-player-float { position:relative; width:100%; height:100%; }
+/* Per-card idle float, driven entirely by the compositor (CSS animation,
+   not a JS-ticked tween) — PlayersScrollReveal.tsx only ever sets these
+   five custom properties once per card and toggles this class; no per-frame
+   JS is involved. will-change is scoped to this class alone (added/removed
+   together with the animation itself), not left on at rest. */
+.kok-player-float--floating {
+  animation:kok-player-float-spin var(--float-duration,3.5s) ease-in-out var(--float-delay,0s) infinite;
+  will-change:transform;
+}
+@keyframes kok-player-float-spin {
+  0%,100% { transform:translate(calc(var(--float-x,0px) * -1),calc(var(--float-y,0px) * -1)) rotateZ(calc(var(--float-rotate,0deg) * -1)); }
+  50% { transform:translate(var(--float-x,0px),var(--float-y,0px)) rotateZ(var(--float-rotate,0deg)); }
+}
+@media (prefers-reduced-motion:reduce) {
+  .kok-player-float--floating { animation:none; }
+}
+/* box-shadow lives on .kok-player-card itself (the element that actually
+   rotates), not on the individual faces — so the shadow rotates together
+   with the card through the whole flip instead of staying flat while the
+   card turns edge-on at 90deg, which would read as a fixed shadowed
+   rectangle sitting behind the (momentarily thin) card. */
+.kok-player-card {
+  position:relative; width:100%; height:100%; transform-style:preserve-3d; -webkit-transform-style:preserve-3d; transform:rotateY(180deg);
+  box-shadow:0 10px 26px rgba(0,0,0,.32), 0 3px 8px rgba(0,0,0,.22);
+  will-change:transform;
+}
+.kok-player-card__back,
+.kok-player-card__front {
+  position:absolute; inset:0; width:100%; height:100%; overflow:hidden;
+  border-radius:.6rem;
+  backface-visibility:hidden; -webkit-backface-visibility:hidden;
+}
+.kok-player-card__front { transform:rotateY(180deg); background:url("/assets/img/players/card-bg.jpg") center/cover no-repeat; }
+.kok-player-card__back {
+  pointer-events:none;
+  --kok-player-back-pattern:url("/assets/img/players/card-back.svg");
+  background-color:#fff;
+  background-image:var(--kok-player-back-pattern);
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+}
+/* Subtle top-to-bottom shading on the back face only — front is untouched.
+   ::after is clipped by __back's own overflow:hidden + inherited radius, so
+   it can never bleed past the card's rounded corners. */
+.kok-player-card__back::after {
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:linear-gradient(to bottom, rgba(0,0,0,0) 35%, rgba(0,0,0,.08) 72%, rgba(0,0,0,.18) 100%);
+}
+@media screen and (max-width:767px) {
+  .kok-player-card { box-shadow:0 7px 16px rgba(0,0,0,.30), 0 2px 5px rgba(0,0,0,.20); }
+}
+.kok-player figure { position:relative; width:100%; height:100%; overflow:hidden; background-color:#00000026; }
+.kok-player figure:before { content:""; position:absolute; z-index:3; inset:0; background:linear-gradient(#ff4c00,#ffba00); opacity:.05; transition:opacity .2s ease-in-out; pointer-events:none; }
+.kok-player figure img { position:relative; z-index:2; width:100%; transform:scale(2) translateY(18%) translateX(5%); transition:transform .2s ease-in-out; }
+.kok-player:hover figure:before { opacity:.2; }
+.kok-player:hover figure img { transform:scale(2.1) translateY(18%) translateX(5%); }
+.kok-player figure img.kok-player-silhouette { position:absolute; z-index:2; inset:auto auto 0 50%; width:auto; max-width:none; height:94%; transform:translateX(-50%) scale(1.08); transform-origin:center bottom; filter:grayscale(1) brightness(.075) contrast(2.4); opacity:.94; transition:transform .25s ease-in-out,filter .25s ease-in-out; }
+.kok-player:hover figure img.kok-player-silhouette { transform:translateX(-50%) scale(1.12); filter:grayscale(1) brightness(.1) contrast(2.4); }
+.kok-player figure img.kok-player-photo { position:absolute; z-index:2; top:-4%; bottom:auto; width:auto; max-width:none; height:200%; object-fit:contain; transform:translateX(-50%); transform-origin:center top; filter:none; transition:transform .25s ease-in-out; }
+.kok-player--confirmed:nth-child(1) figure img.kok-player-photo { top:-12%; left:-20%; height:245%; }
+.kok-player--confirmed:nth-child(2) figure img.kok-player-photo { top:-30%; left:115%; height:300%; }
+.kok-player:hover figure img.kok-player-photo { transform:translateX(-50%) scale(1.025); }
+.kok-player-corners { position:absolute; z-index:5; inset:0; pointer-events:none; }
+.kok-player-corner { position:absolute!important; z-index:5!important; width:13%!important; height:auto!important; max-width:none!important; transform:none!important; filter:none!important; opacity:.48; }
+.kok-player-corner--top { top:2.7%; right:3.5%; }
+.kok-player-corner--bottom { bottom:2.7%; left:3.5%; transform:rotate(180deg)!important; }
+.kok-player figcaption { position:absolute; z-index:4; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; }
+.kok-main section .team-info__player-name-en { position:absolute; z-index:5; top:3%; left:.4rem; width:fit-content; margin:0; color:#fff; opacity:.95; font-family:"Bebas Neue",Anton,sans-serif; font-size:min(10.04167vw,50px); font-weight:400; line-height:1.02; text-align:left; text-transform:uppercase; writing-mode:vertical-rl; text-shadow:0 0 2rem #0000004d; }
+
+/* PLAYERS scroll reveal: cards stay at their normal opacity:1 / front-facing
+   CSS resting state here; the script (PlayersScrollReveal.tsx) only applies
+   its gathered/back-facing pose (via gsap.set, in useLayoutEffect) once DOM
+   lookup and GSAP init both succeed, so if the script never runs the
+   existing 5x2 / 3-4-3 layout simply displays as-is, front-facing, unchanged.
+   Per-card flip perspective lives on .kok-player itself (see above), driven
+   by the --kok-player-flip-perspective custom property the script sets on
+   .kok-player-list per breakpoint. */
+
+.kok-main .result { padding-bottom:30rem; }
+.kok-main .result .detail#resultGF { padding-top:4rem; }
+.kok-ranking { display:grid; grid-template-columns:repeat(5,1fr); align-items:end; gap:1rem; width:100%; margin:0; padding:0; }
+.kok-ranking li { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; min-height:17rem; padding:2rem 1rem; overflow:hidden; list-style:none; color:#fff; border:1px solid #83724f; background:#14120eaa; }
+.kok-ranking li:first-child { min-height:29rem; order:3; background:linear-gradient(#b48a3fcc,#251807dd); border-color:#efd087; }.kok-ranking li:nth-child(2){min-height:25rem;order:2}.kok-ranking li:nth-child(3){min-height:22rem;order:4}.kok-ranking li:nth-child(4){order:1}.kok-ranking li:nth-child(5){order:5}
+.rank-crown { color:#d9b45e; font:3.5rem/1 Georgia,serif; }.kok-ranking li>b { margin-top:1rem; font:400 5.3rem/1 Anton,sans-serif; }.kok-ranking li>div { display:flex; flex-direction:column; margin-top:1.2rem; text-align:center; }.kok-ranking li strong { font:400 .8rem/1 Anton,sans-serif; letter-spacing:.12em; }.kok-ranking li small { margin-top:.6rem; color:#9e947f; font-size:.58rem; letter-spacing:.12em; }
+.kok-points-panel { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; width:100%; }
+.kok-points-panel>div { display:flex; flex-direction:column; min-height:18rem; padding:3rem; border-top:.3rem solid #c99d48; background:#12100db8; }.kok-points-panel>div span { color:#a89165; font-size:.65rem; letter-spacing:.18em; }.kok-points-panel>div strong { margin-top:2rem; color:#e8cb87; font:400 2.1rem/1 Anton,sans-serif; }.kok-points-panel>div small { margin-top:.8rem; font-size:.9rem; }.kok-points-panel>p { grid-column:1/-1; text-align:center; }
+
+.kok-rule-board { position:relative; padding:6rem 5rem; color:#fff; background:#090807e8; }
+.kok-rule-board:before { content:""; position:absolute; inset:1rem; border:1px solid #aa8745; pointer-events:none; }
+.rule-top { text-align:center; }.rule-top>span { color:#b99a5e; font:400 .75rem/1 Anton,sans-serif; letter-spacing:.25em; }.rule-top>strong { display:block; margin-top:1rem; color:#e2c374; font:400 7.5rem/.85 Anton,sans-serif; }.rule-top>p { margin-top:1rem; }
+.rule-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin:5rem 0; }
+.rule-flow article { position:relative; min-height:20rem; padding:3rem 2rem; border:1px solid #6f6043; background:#15120f; }
+.rule-flow article>span { position:absolute; top:1.5rem; right:1.5rem; color:#d4ad5229; font:400 4.5rem/1 Anton,sans-serif; }.rule-flow h3 { margin:1rem 0 0; color:#dfc077; font:400 2.2rem/1 Anton,sans-serif; letter-spacing:.08em; }.rule-flow h4 { margin:.8rem 0 0; font-size:1rem; }.rule-flow p { margin:2rem 0 0; color:#c2b9aa; line-height:1.8; }.rule-flow b { position:absolute; bottom:2rem; color:#bfa05f; font:400 .7rem/1 Anton,sans-serif; letter-spacing:.18em; }
+.rule-total { text-align:center; border-top:1px solid #816c43; padding-top:4rem; }.rule-total span { color:#a89061; font:400 .7rem/1 Anton,sans-serif; letter-spacing:.2em; }.rule-total strong { display:block; margin-top:.7rem; color:#fff; font:400 4rem/1 Anton,sans-serif; }.rule-total p { line-height:1.8; }
+
+.kok-rule-intro { max-width:52rem; margin:0 auto; text-align:center; }
+.kok-rule-intro>span { color:var(--kok-gold); font:400 .85rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.24em; }
+.kok-rule-intro h3 { margin:1.2rem 0 0; color:#fff; font-size:clamp(1.8rem,3vw,3.2rem); line-height:1.25; }
+.kok-rule-intro p { margin:1.4rem 0 0; color:#c9c9c9; line-height:1.8; }
+.kok-rule-details { display:grid; gap:.8rem; margin-top:2.5rem; }
+.kok-rule-details details { overflow:hidden; border:1px solid #e7ba3752; background:#080808e8; }
+.kok-rule-details summary { display:grid; grid-template-columns:3rem 1fr auto 1.5rem; align-items:center; gap:1rem; min-height:5.25rem; padding:1rem 1.5rem; cursor:pointer; list-style:none; transition:background-color .2s; }
+.kok-rule-details summary::-webkit-details-marker { display:none; }
+.kok-rule-details summary:hover { background:#e7ba370d; }
+.kok-rule-details summary>span { color:var(--kok-red); font:400 1.15rem/1 "Bebas Neue",Anton,sans-serif; }
+.kok-rule-details summary>strong { color:#fff; font-size:1.2rem; }
+.kok-rule-details summary>small { color:#a98f5a; font:400 .9rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.18em; }
+.kok-rule-details summary:after { content:"＋"; color:var(--kok-gold); font-size:1.25rem; line-height:1; }
+.kok-rule-details details[open] summary { border-bottom:1px solid #e7ba3738; background:#e7ba3709; }
+.kok-rule-details details[open] summary:after { content:"−"; }
+.kok-rule-detail-body { padding:2rem 2rem 2.25rem 5.5rem; color:#d1d1d1; }
+.kok-rule-detail-body ul,.kok-rule-detail-body ol { display:grid; gap:.75rem; margin:0; padding-left:1.2rem; }
+.kok-rule-detail-body li { padding-left:.25rem; line-height:1.7; }
+.kok-rule-detail-body li::marker { color:var(--kok-gold); font-weight:700; }
+.kok-judge-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; padding-left:2rem; }
+.kok-judge-grid article { padding:1.5rem; border-top:3px solid var(--kok-gold); background:#14110dcc; }
+.kok-judge-grid b { color:var(--kok-gold); font:400 clamp(1.4rem,1.7vw,1.85rem)/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.08em; }
+.kok-judge-grid em { margin-left:.65rem; color:#fff; font-size:.8rem; font-style:normal; }
+.kok-judge-grid p { margin:.9rem 0 0; color:#c7c1b6; font-size:.85rem; line-height:1.7; }
+.kok-score-scale { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); margin-bottom:1.75rem; border:1px solid #e7ba374d; }
+.kok-score-scale span { display:flex; flex-direction:column; align-items:center; gap:.45rem; padding:1rem .4rem; border-right:1px solid #e7ba3740; text-align:center; }
+.kok-score-scale span:last-child { border-right:0; }
+.kok-score-scale b { color:#fff; font-size:.82rem; }.kok-score-scale em { color:var(--kok-gold); font:400 1.35rem/1 "Bebas Neue",Anton,sans-serif; font-style:normal; }
+.kok-conduct-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.25rem; padding-left:2rem; }
+.kok-conduct-grid article { padding:1.5rem; border:1px solid #e7ba373d; background:#111; }
+.kok-conduct-grid h4 { margin:0 0 1rem; color:var(--kok-gold); font-size:1.05rem; }
+
+.kok-main .about .itemWrap { background:#000c; }
+.kok-main .about .itemWrap .item { padding:min(4.16vw,80px); }
+.kok-map-link { color:#e2c47d; text-decoration:underline; }
+.kok-map-wrap { width:100%; margin-top:1rem; }
+.kok-map-embed { display:block; width:100%; aspect-ratio:16/9; border:0; border-radius:.5rem; background:#111; }
+.kok-map-wrap .kok-map-link { display:inline-block; margin-top:.85rem; }
+.kok-venue-gallery { display:grid; grid-template-columns:1fr; gap:1rem; margin-top:2rem; padding-top:2rem; border-top:1px solid #e7ba3740; }
+.kok-venue-gallery figure { margin:0; overflow:hidden; border-radius:.5rem; background:#111; }
+.kok-venue-gallery img { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; }
+.kok-main .kok-information { padding:15rem 0 8rem; }
+.kok-main .kok-sponsors { padding:6rem 0 15rem; }
+.kok-small-heading { display:flex!important; flex-direction:column; justify-content:center; width:auto!important; height:auto!important; margin:0 auto 5rem!important; filter:none!important; color:#fff; font:400 min(5vw,96px)/.9 "Big Noodle Titling",Anton,sans-serif; letter-spacing:.04em; text-align:center; }
+.kok-main section .kok-small-heading span { margin:.8rem 0 0; color:#b8ad9b; font-size:.9rem; letter-spacing:.12em; }
+.kok-socials { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; width:85%; max-width:1200px; margin:0 auto; background:#69552f; border:1px solid #69552f; }
+.kok-social { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:10rem; color:#fff; background:#090909e8; transition:background .2s ease; }
+.kok-social:hover { background:#17130d; }
+.kok-social span { font:400 2.2rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.08em; }
+.kok-social small { margin-top:.8rem; color:#aa9365; font:400 .6rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.22em; }
+.kok-social-youtube span { color:#ff453a; }.kok-social-instagram span { color:#e1b764; }
+.kok-sponsor-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1rem; width:85%; max-width:1400px; margin:0 auto; }
+.kok-sponsor-slot { display:flex; flex-direction:column; align-items:center; justify-content:center; aspect-ratio:2/1; color:#8d806a; background:#f4f2ed; border:1px solid #fff; }
+.kok-sponsor-slot small { font:400 .55rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.2em; }.kok-sponsor-slot strong { margin-top:.35rem; color:#b3aa9d; font:400 1.7rem/1 "Bebas Neue",Anton,sans-serif; }.kok-sponsor-slot span { margin-top:.25rem; color:#c8c2b9; font-size:.55rem; letter-spacing:.2em; }
+.kok-presented { display:flex; flex-direction:column; align-items:center; margin:8rem auto 0; color:#fff; }
+.kok-presented:before { content:""; width:min(20rem,60vw); height:1px; margin-bottom:2.5rem; background:linear-gradient(90deg,transparent,#8e7546,transparent); }
+.kok-presented small { color:#9b8967; font:400 .65rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.28em; }
+.kok-presented strong { margin-top:1rem; font:700 4.5rem/.8 Arial,sans-serif; letter-spacing:-.08em; }
+.backTop { position:relative; z-index:3; display:flex; align-items:center; justify-content:center; width:5.25rem; height:7.35rem; margin:0 auto 2rem; overflow:hidden; color:#252525; background:linear-gradient(145deg,#fff 0%,#f7f7f4 100%); border:0; border-radius:.52rem; clip-path:none; box-shadow:0 .85rem 1.8rem #0009,0 .12rem .22rem #0006; font:400 .88rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.08em; transform:rotate(-4deg); transition:transform .2s,color .2s,box-shadow .2s; }
+.backTop span { position:relative; z-index:1; padding:.45rem .35rem; background:#fdfdfbd9; }
+.backTop-mark { position:absolute; width:.5rem!important; height:auto!important; }
+.backTop-mark--top { top:.48rem; right:.5rem; }
+.backTop-mark--bottom { bottom:.48rem; left:.5rem; transform:rotate(180deg); }
+.backTop:hover { color:var(--kok-red); box-shadow:0 1rem 2rem #000a,0 .12rem .22rem #0006; transform:translateY(-2px) rotate(0); }
+@media screen and (max-width:767px) {
+  .backTop { width:3rem; height:4.2rem; margin-bottom:1.5rem; border-radius:.32rem; font-size:.58rem; }
+  .backTop-mark { width:.3rem!important; }
+  .backTop-mark--top { top:.28rem; right:.3rem; }
+  .backTop-mark--bottom { bottom:.28rem; left:.3rem; }
+  .kok-map-embed { aspect-ratio:4/3; border-radius:.35rem; }
+  .kok-map-wrap .kok-map-link { margin-top:.65rem; }
+  .kok-venue-gallery { grid-template-columns:1fr; gap:.65rem; margin-top:1.25rem; padding-top:1.25rem; }
+  .kok-venue-gallery figure { border-radius:.35rem; }
+}
+.kok-footer { position:relative; z-index:3; width:100%; margin:0; overflow:hidden; color:#fff; background:#020202; border-radius:0; box-shadow:0 .2rem .9rem #0007; }
+.kok-footer-sponsors { padding:4.5rem 4rem 5rem; color:#4c4c4c; background:#f5f5f5; text-align:center; }
+.kok-footer-sponsors h2 { font:400 4.25rem/.9 "Big Noodle Titling",Anton,sans-serif; letter-spacing:.06em; }.kok-footer-sponsors>p { margin-top:1rem; color:#777; font-size:1.1rem; }
+.kok-footer-sponsors .kok-sponsor-grid { margin-top:3.5rem; }
+.kok-footer-sponsors .kok-sponsor-slot { background:#fff; border-color:#d8d8d8; box-shadow:0 .25rem .8rem #0000000d; }
+.kok-footer-socials { display:flex; align-items:center; justify-content:center; gap:1rem; min-height:5.5rem; color:#898989; background:#171717; }
+.kok-footer-socials>p { font-size:1rem; }.kok-footer-socials>div { display:flex; gap:.55rem; }
+.kok-footer-socials a { display:grid; place-items:center; width:2.6rem; aspect-ratio:1; color:#111; border-radius:50%; background:#fff; font:400 1.2rem/1 Arial,sans-serif; text-decoration:none; transition:transform .2s,filter .2s; }
+.kok-footer-socials a:hover { transform:translateY(-2px); filter:brightness(1.08); }
+.kok-footer-socials .x,.kok-footer-socials .instagram { overflow:hidden; border-radius:.65rem; background:transparent; }
+.kok-footer-socials a img { width:100%; height:100%; object-fit:contain; }
+.kok-footer-main { display:flex; flex-direction:column; align-items:center; padding:5rem 2rem 3rem; background:#030303; }
+.kok-footer-event { display:flex; flex-direction:column; align-items:center; }.kok-footer-event>img { width:clamp(14rem,18vw,20rem); height:auto; }
+.kok-footer-tagline { margin-top:.75rem; font-size:.8rem; }
+.kok-footer-main nav { display:flex; align-items:center; gap:.65rem; margin-top:4.5rem; color:#888; font-size:.9rem; }.kok-footer-main nav i { color:#4e4e4e; font-style:normal; }
+.kok-footer-mowl { display:flex; flex-direction:column; align-items:center; margin-top:4rem; }
+.kok-footer-mowl img { width:clamp(7rem,8vw,9rem); height:auto; }
+.kok-footer-mowl small { margin-top:1rem; color:#8e7c5b; font:400 .75rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.18em; }
+.kok-copyright { margin-top:1.8rem; color:#666; font-size:.75rem; }
+.videoBg { z-index:0; background:#000; }
+.videoBg:before { opacity:.7; background:#000; }
+.videoBg video { width:auto; height:auto; min-width:100%; min-height:100%; object-fit:cover; }
+
+@media screen and (min-width:768px) and (max-width:1100px) {
+  .team-info__body { width:92%; min-width:0; }
+}
+
+@media screen and (max-width:767px) {
+  .kok-header { position:relative; min-height:5.8rem; padding:.9rem 1.2rem; }.kok-header>nav,.header-ticket { display:none; }.kok-brand-logotype { width:9.5rem; }.kok-header-tagline { margin-top:.18rem; font-size:.4rem; }
+  .kok-mobile-menu { display:block; margin-left:auto; }
+  .kok-mobile-menu summary { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.36rem; width:2.9rem; height:2.9rem; padding:.65rem; cursor:pointer; list-style:none; border:1px solid #e7ba3766; border-radius:.35rem; background:#080808; }
+  .kok-mobile-menu summary::-webkit-details-marker { display:none; }
+  .kok-mobile-menu summary span { display:block; width:100%; height:2px; background:#fff; transition:transform .2s,opacity .2s; }
+  .kok-mobile-menu[open] summary { position:relative; z-index:23; }
+  .kok-mobile-menu[open] summary span:nth-child(1) { transform:translateY(.48rem) rotate(45deg); }
+  .kok-mobile-menu[open] summary span:nth-child(2) { opacity:0; }
+  .kok-mobile-menu[open] summary span:nth-child(3) { transform:translateY(-.48rem) rotate(-45deg); }
+  .kok-mobile-menu nav { position:fixed; z-index:22; inset:0; display:flex!important; flex-direction:column; align-items:center; justify-content:center; gap:0; margin:0; padding:6.5rem 2rem 3rem; background:#050505fa; }
+  .kok-mobile-menu nav:before { content:"MENU"; margin-bottom:2rem; color:var(--kok-gold); font:400 .8rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.35em; }
+  .kok-mobile-menu nav a { display:flex; align-items:center; justify-content:center; width:min(22rem,100%); min-height:4.25rem; padding:0 .5rem; border-bottom:1px solid #ffffff2b; font-size:1.35rem!important; }
+  body:has(.kok-mobile-menu[open]) { overflow:hidden; }
+  .kok-main .top { min-height:0; padding:min(20vw,154px) 0 min(26vw,200px); }
+  .kok-main .top h1 { width:94%; padding-bottom:100%; }
+  .kok-main .top h1 .prize { top:-8%; width:80%; }.kok-main .top h1 .prize .emblem>strong { font-size:12vw; }
+  .kok-main .top h1 .logo { width:45%; }.kok-main .top h1 .logo.qualifiers { left:2%; }.kok-main .top h1 .logo.grandFinal { right:2%; }.kok-mark span { width:23vw; font-size:3rem; }.kok-main .top h1 .logo .title strong { font-size:5.2vw; }.kok-main .top h1 .logo .title small { font-size:.5rem; }
+  .main-event-logo { top:38%; width:75%; }.main-event-logo strong { font-size:12vw; }.main-event-logo p { font-size:.56rem!important; }.top-side-seal { top:.6rem; right:.6rem; width:24vw; }.top-side-seal span { font-size:9vw; }.top-side-seal small { font-size:.45rem; }
+  .kok-main .top .events { width:95%; }.kok-main .top .events>div { padding:2rem 1rem; }.kok-main .top .events .event_title strong { font-size:6vw; }.kok-main .top .events .event_title .ghost-label { font-size:12vw; }.kok-main .top .events .event_title small { font-size:.6rem; }
+  .kok-section-heading { min-height:0; margin-bottom:4rem!important; }.kok-section-heading>strong { font-size:14vw; }.kok-main section .kok-section-heading span { font-size:.9rem; }
+  .kok-main .streaming .inner .tableWrap { width:92%; padding:10vw 5vw; }.schedule-location { margin-bottom:2rem!important; }.kok-timeline li { grid-template-columns:2.2rem 5.5rem 1fr; min-height:5.5rem; }.kok-timeline time { font-size:1.8rem; }.kok-timeline li>div { padding-left:1rem; }.kok-timeline li strong { font-size:.88rem; }.kok-timeline li small { font-size:.5rem; }
+  .kok-main .team { padding:7rem 0 10rem; }
+  .kok-tabs ul { transform:scale(.82)!important; }.team-intro { margin:3rem auto; }.team-info__body { width:94%; min-width:0; max-width:none; }.kok-player-list { grid-template-columns:repeat(8,minmax(0,1fr)); column-gap:12px; row-gap:28px; }.kok-player { grid-column:span 2; }.kok-player-card__back,.kok-player-card__front { border-radius:4px; }.kok-player:nth-child(1),.kok-player:nth-child(8) { grid-column:2 / span 2; }.kok-player:nth-child(4) { grid-column:1 / span 2; }.kok-main section .team-info__player-name-en { top:.35rem; left:.25rem; font-size:clamp(1rem,5.5vw,1.75rem); }
+  .kok-rule-board { width:92%!important; padding:4rem 1.5rem; }.rule-top>strong { font-size:5rem; }.rule-flow { grid-template-columns:1fr; margin:3rem 0; }.rule-flow article { min-height:17rem; }.kok-main .about .itemWrap { width:92%; }.kok-main .about .itemWrap .item .table .tr { display:grid; grid-template-columns:1fr; gap:.5rem; }.kok-main .about .itemWrap .item .table .tr .th { width:auto; color:#d1b46e; }.kok-main .about .itemWrap .item .table .th,.kok-main .about .itemWrap .item .table .td,.kok-main .about .itemWrap .item .table p { font-size:3vw; }
+  .kok-main .kok-information { padding:7rem 0 4rem; }.kok-main .kok-sponsors { padding:4rem 0 8rem; }.kok-small-heading { margin-bottom:3rem!important; font-size:3rem!important; }.kok-socials { grid-template-columns:1fr; width:90%; }.kok-social { min-height:7rem; }.kok-sponsor-grid { grid-template-columns:repeat(2,1fr); gap:.5rem; width:90%; }.kok-presented { margin-top:5rem; }.kok-presented strong { font-size:3.5rem; }
+  .kok-footer { width:100%; margin:0; border-radius:0; }.kok-footer-sponsors { padding:3.5rem 1rem 4rem; }.kok-footer-sponsors h2 { font-size:3.5rem; }.kok-footer-sponsors>p { font-size:1rem; }.kok-footer-socials { flex-direction:column; gap:.75rem; padding:1.2rem; }.kok-footer-main { padding:4rem 1rem 2.5rem; }.kok-footer-event>img { width:13rem; }.kok-footer-tagline { margin-top:.55rem; font-size:.68rem; }.kok-footer-main nav { flex-wrap:wrap; justify-content:center; margin-top:3.5rem; }.kok-footer-mowl img { width:6.5rem; }
+  .kok-hero-tagline { margin-top:.35rem; font-size:.55rem; letter-spacing:.16em; }
+}
+
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } .videoBg video { display:none; } }
+
+/* Fidelity layer: preserve the recovered layout and make artwork file-swappable. */
+.kok-main .top { padding:min(20.8333333333vw,400px) 0; }
+.kok-main .top h1 .prize { top:-24%; width:36%; }
+.kok-main .top h1 .prize .sponsor { width:55%; margin:-4% 0 0; padding:0; border:0; }
+.kok-main .top h1 .logo.playoffs { left:8.5%; }
+.kok-main .top .events>div { padding:0; background:none; border:0; backdrop-filter:none; }
+.kok-main .top .events .event_title { display:block; min-height:0; overflow:visible; }
+.kok-main .top .events .event_title img { position:relative; }
+.kok-section-heading { display:block; width:auto!important; height:min(9.375vw,180px)!important; min-height:0; margin:0 auto 10rem!important; filter:brightness(1.5)!important; }
+.kok-section-heading:before,.kok-section-heading:after { content:none; }
+.kok-main section .kok-section-heading img { width:auto; height:100%; margin:0 auto; }
+.kok-main section .kok-section-heading span { margin:min(1.5625vw,30px) 0 0; font-size:1.7em; }
+.kok-section-heading>strong { display:block; color:#fff; font-family:"Big Noodle Titling",Anton,sans-serif; font-size:min(9.375vw,180px); font-weight:400; line-height:.78; letter-spacing:.035em; text-shadow:0 .04em .08em #0005; }
+.kok-main .team .team-intro { margin:0 auto 4rem; }
+.kok-header nav a,.header-ticket,.schedule-location,.kok-timeline .seq,.kok-timeline time,.kok-timeline li small,.player-text small,.player-text strong,.player-text span,.kok-ranking li>b,.kok-ranking li strong,.kok-points-panel>div span,.kok-points-panel>div strong,.rule-top>span,.rule-top>strong,.rule-flow h3,.rule-flow b,.rule-total span,.rule-total strong,.kok-footer>strong,.kok-main .streaming .inner h3,.kok-main .team h3 { font-family:"Bebas Neue",Anton,sans-serif; font-weight:400; }
+
+@media screen and (max-width:767px) {
+  .kok-main .top { padding:min(23.4680573664vw,180px) 0; }
+  .kok-main .top h1 .prize { top:2%; width:70%; }
+  .kok-main .top h1 .logo.playoffs { left:2%; }
+  .kok-section-heading { height:min(15.6453715776vw,120px)!important; margin:0 auto 3rem!important; }
+  .kok-section-heading>strong { font-size:min(15.6453715776vw,120px); }
+  .kok-main section .kok-section-heading span { margin:min(3.9113428944vw,30px) 0 0; font-size:.9em; }
+}
+
+/* KING OF KINGS logo palette */
+.kok-header { background:#050505f2; border-bottom-color:var(--kok-gold); }
+.kok-header nav a:hover { color:var(--kok-gold); }
+.header-ticket { background:#fff; }
+.kok-main section .kok-section-heading .jp { color:#fff; }
+.kok-section-heading>strong { text-shadow:0 .04em .08em #0008; }
+.kok-section-card { --kok-panel-bg:#00000080; position:relative!important; width:85%!important; max-width:1500px!important; box-sizing:border-box; margin-right:auto!important; margin-left:auto!important; overflow:hidden; border:.5px solid var(--kok-gold)!important; border-radius:clamp(12px,1vw,16px)!important; background:var(--kok-panel-bg)!important; }
+.kok-section-card>* { position:relative; z-index:1; }
+.kok-card-corners { position:absolute!important; inset:0; z-index:0!important; pointer-events:none; }
+.kok-card-corner { position:absolute; width:clamp(3rem,4vw,5rem)!important; height:auto!important; opacity:.08; }
+.kok-card-corner--top { top:clamp(1.2rem,2vw,2rem); right:clamp(1.2rem,2vw,2rem); }
+.kok-card-corner--bottom { bottom:clamp(1.2rem,2vw,2rem); left:clamp(1.2rem,2vw,2rem); transform:rotate(180deg); }
+.kok-time-wrap,.kok-ticket-panel,.kok-rule-board { padding:min(6.25vw,120px) min(7.8125vw,150px)!important; }
+.kok-about-card { --kok-panel-bg:#000000d9; }
+.kok-about-card .kok-card-corner { opacity:.06; }
+.kok-time-wrap h3 { color:var(--kok-gold)!important; }
+.kok-main .streaming .inner h3:before { bottom:-.5rem; background:var(--kok-gold); }
+.schedule-location { color:#fff; }
+.kok-timeline li small { color:var(--kok-gold); }
+.kok-main section p.schedule-location,.kok-main section p.kok-ticket-label { font-size:min(1.7vw,40px)!important; line-height:1.2; }
+.rule-top>span { font-size:1rem; line-height:1.2; }
+.kok-timeline .seq { color:var(--kok-red); }
+.kok-timeline { border-color:var(--kok-gold); }
+.kok-timeline li { border-bottom-color:#e7ba3766; }
+.kok-timeline li>div { border-left-color:var(--kok-gold); }
+.kok-header nav { gap:clamp(1rem,2vw,2.8rem); }
+.kok-ticket-panel { color:#fff; text-align:center; }
+.kok-ticket-panel:before { content:none; }
+.kok-ticket-panel>* { position:relative; z-index:1; }
+.kok-ticket-label { color:var(--kok-gold); font:400 1.15rem/1.2 "Bebas Neue",Anton,sans-serif; letter-spacing:.24em; }
+.kok-ticket-panel h3 { margin-top:1.8rem; font-size:clamp(1.65rem,2.4vw,2.6rem); font-weight:700; letter-spacing:.08em; }
+.kok-ticket-copy { margin:1.5rem auto 0; color:#d8d8d8; line-height:1.8; }
+.kok-ticket-cta { display:flex; align-items:center; justify-content:center; gap:1.2rem; width:min(30rem,90%); min-height:5rem; margin:3rem auto 0; color:#080706; background:var(--kok-gold); font:400 1.35rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.14em; transition:transform .2s,background-color .2s; }
+.kok-ticket-cta:hover { transform:translateY(-4px); background:#f0d300; }
+.kok-ticket-cta span { font-family:Arial,sans-serif; font-size:1.1rem; }
+.kok-ticket-panel>small { display:block; margin-top:1.5rem; color:#999; font-size:.72rem; }
+.team-intro { color:#d8e0e6; }
+.kok-player figure:before { background:linear-gradient(145deg,#712cff 0%,#ef2ea8 32%,#ff6737 67%,#ffd34f 100%); mix-blend-mode:screen; opacity:0; }
+.kok-player:hover figure:before { opacity:.42; }
+.kok-rule-board:before { content:none; }
+.rule-top>span,.rule-top>strong,.rule-flow h3,.rule-flow b { color:var(--kok-gold); }
+.rule-flow article { border-color:var(--kok-gold); background:#0b0b0be8; }
+.rule-flow article>span { color:#e7ba3740; font-family:"Bebas Neue",Anton,sans-serif; font-size:min(6vw,7rem); font-weight:700; line-height:.8; }
+.rule-total { border-top-color:var(--kok-red); }
+.kok-main .about .itemWrap { border-color:var(--kok-gold); }
+.kok-main .about .itemWrap .item .table h4:before { background:var(--kok-red); }
+.kok-main .about .itemWrap .item .table .tr .th,.kok-map-link { color:var(--kok-gold); }
+.kok-about-ticket { width:min(15rem,100%); height:auto; aspect-ratio:3.3/1; margin-top:1.5rem; text-decoration:none; }
+.kok-about-ticket img { width:90%; }
+.kok-main .about .itemWrap .item .table .kok-about-ticket-note { margin:.85rem 0 0; }
+.kok-main .about .itemWrap .item .table .kok-about-ticket-note p { color:#999; font-size:min(.6770833333vw,13px); }
+.kok-footer-sponsors h2 { color:var(--kok-black); }
+.kok-footer-sponsors>p { color:var(--kok-green); }
+.kok-footer-sponsors .kok-sponsor-slot { border-color:#e7ba3777; }
+.kok-footer-sponsors .kok-sponsor-slot small,.kok-footer-sponsors .kok-sponsor-slot span { color:var(--kok-green); }
+.kok-footer-sponsors .kok-sponsor-slot strong { color:var(--kok-black); }
+.sponsor-list__wrap { width:85%; max-width:1400px; margin:4.5rem auto 0; }
+.sponsor-list+.sponsor-list { margin-top:5rem; }
+.sponsor-list .head { margin:0 0 2.5rem; color:#5d5d5d; font-size:1.45rem; font-weight:700; letter-spacing:.08em; }
+.sponsor-list__grade1 ul { display:grid; grid-template-columns:repeat(5,1fr); justify-content:center; gap:2rem 2.5rem; }
+.sponsor-logo-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; aspect-ratio:572/200; color:#aaa; background:#fff; }
+.sponsor-logo-real { display:flex; align-items:center; justify-content:center; width:100%; aspect-ratio:572/200; overflow:hidden; background:#161616; }
+.sponsor-logo-real img { display:block; width:82%; max-width:82%; height:72%; object-fit:contain; }
+.sponsor-logo-placeholder small { font:400 .62rem/1 "Bebas Neue",Anton,sans-serif; letter-spacing:.22em; }
+.sponsor-logo-placeholder strong { margin-top:.35rem; color:#555; font:400 2rem/1 "Bebas Neue",Anton,sans-serif; }
+.sponsor-logo-placeholder span { margin-top:.25rem; font-size:.6rem; letter-spacing:.2em; }
+.kok-footer-socials { background:var(--kok-black); border-top:3px solid var(--kok-gold); }
+.kok-footer-main { background:linear-gradient(180deg,#090704 0,#030303 52%); }
+.kok-footer-main nav { color:#93a3af; }
+
+@media screen and (max-width:767px) {
+  .kok-main .streaming .inner h3:before { bottom:-.5rem; }
+  .kok-timeline .seq { font-size:1.15rem; }
+  .kok-main section p.schedule-location,.kok-main section p.kok-ticket-label { font-size:min(4vw,18px)!important; }
+  .rule-top>span { font-size:.75rem; }
+  .rule-flow article>span { font-size:5.5rem; }
+  .kok-section-card { width:92%!important; background:var(--kok-panel-bg)!important; }
+  .kok-card-corner { width:2.25rem!important; }
+  .kok-card-corner--top { top:.9rem; right:.9rem; }
+  .kok-card-corner--bottom { bottom:.9rem; left:.9rem; }
+  .kok-time-wrap,.kok-ticket-panel,.kok-rule-board { padding:10vw 5vw!important; }
+  .kok-ticket-label { line-height:1.4; }
+  .kok-ticket-panel h3 { margin-top:1.3rem; font-size:1.35rem; }
+  .kok-ticket-copy { width:90%; font-size:.82rem!important; }
+  .kok-ticket-cta { min-height:4rem; margin-top:2.2rem; font-size:1.1rem; }
+  .kok-about-ticket { width:min(15rem,100%); height:auto; min-height:0; aspect-ratio:3.3/1; margin-top:1.2rem; }
+  .kok-main .about .itemWrap .item .table .kok-about-ticket-note p { font-size:.7rem; }
+  .sponsor-list__wrap { width:92%; margin-top:3.5rem; }
+  .sponsor-list+.sponsor-list { margin-top:3.5rem; }
+  .sponsor-list .head { margin-bottom:1.75rem; font-size:1rem; }
+  .sponsor-list__grade1 ul { grid-template-columns:repeat(2,1fr); gap:1rem; }
+}
+
+/* Shared typography scale: keep related labels consistent above the imported base rules. */
+.kok-site .kok-header nav a { font-size:var(--kok-type-label)!important; }
+.kok-main section p.schedule-location,
+.kok-main section p.kok-ticket-label,
+.kok-main section .rule-top>span { font-size:var(--kok-type-eyebrow)!important; line-height:1.2!important; }
+.kok-main .kok-timeline .seq { font-size:var(--kok-type-label)!important; }
+.kok-main .kok-timeline li small {
+  font-size:var(--kok-type-label)!important;
+  line-height:1.1;
+  letter-spacing:.14em;
+}
+.kok-site .kok-header-tagline { font-size:var(--kok-type-meta)!important; }
+.kok-main .kok-hero-tagline { font-size:var(--kok-type-label)!important; }
+.kok-site .kok-footer-tagline { font-size:var(--kok-type-label)!important; }
+.kok-site .kok-footer-mowl small { font-size:var(--kok-type-label)!important; }
+.kok-site .kok-footer-sponsors h2 { font-size:4.25rem!important; }
+.kok-site .kok-footer-sponsors>p { font-size:var(--kok-type-label)!important; }
+.kok-site .kok-footer-socials>p { font-size:var(--kok-type-label)!important; }
+.kok-site .kok-footer-main nav { font-size:var(--kok-type-label)!important; }
+.kok-site .kok-copyright { font-size:var(--kok-type-meta)!important; }
+
+@media screen and (max-width:767px) {
+  .kok-site .kok-header {
+    min-height:5.8rem;
+    padding:.9rem 1.2rem;
+  }
+  .kok-main .kok-timeline .seq {
+    font-size:20px!important;
+  }
+  .kok-main .about .itemWrap .item .table .tr {
+    gap:.15rem;
+  }
+  .kok-main .about .itemWrap .item .table .tr .th {
+    margin-bottom:0;
+    line-height:1.25;
+  }
+  .kok-main .about .itemWrap .item .table .tr .td {
+    line-height:1.4;
+  }
+  .kok-site .kok-about-ticket {
+    width:min(110px,34vw)!important;
+  }
+  .kok-site .kok-footer-sponsors h2 { font-size:3.5rem!important; }
+}
+
+/* Keep the distance from each content block to the following heading consistent. */
+:root { --kok-section-gap:15rem; --kok-players-heading-card-gap:105px; }
+.kok-main .streaming,
+.kok-main .team,
+.kok-main .rules {
+  padding:0 0 var(--kok-section-gap)!important;
+}
+/* .ticket is deliberately excluded here: its visible panel now lives inside
+   .kok-ticket-players-stage (see below), so #ticket itself holds only the
+   "TICKET" heading. Giving it the same big --kok-section-gap bottom padding
+   on top of the heading's own margin would double up an unwanted gap before
+   PLAYERS even starts — the real TICKET-panel-to-PLAYERS-heading spacing is
+   controlled entirely inside the stage instead. */
+.kok-main .ticket { padding:0!important; }
+
+/* Compensates for the permanent stage-shift transform (see
+   PlayersScrollReveal.tsx's recomputeStageShiftY()): translateY doesn't
+   change layout height, so once the timeline holds at its shifted end
+   state, that shift's own magnitude was silently adding itself on top of
+   this section's normal --kok-section-gap bottom padding — the PLAYERS ->
+   RULES gap ended up far wider than every other section boundary (root
+   cause, confirmed by measurement: the excess matched the shift's px
+   almost exactly). JS sets --kok-players-shift-compensation to the shift's
+   |px| on this same element (id="players", class="team"), so the two
+   cancel out and the rendered gap matches the site's standard spacing
+   again — not a negative-margin trick on the pin-spacer, an actual
+   reduction of this section's own bottom padding. max(0px, ...) guards
+   against the shift ever exceeding --kok-section-gap and inverting the
+   padding negative. */
+.kok-main .team {
+  padding-bottom:max(0px, calc(var(--kok-section-gap) - var(--kok-players-shift-compensation, 0px)))!important;
+}
+
+@media screen and (max-width:767px) {
+  :root { --kok-section-gap:4rem; --kok-players-heading-card-gap:82px; }
+}
+
+/* Pin shell: this is the element ScrollTrigger actually pins (trigger and
+   pin both point here — see PlayersScrollReveal.tsx). It is a plain wrapper
+   with no transform of its own, so its frozen on-screen position never
+   competes with the y-shift GSAP applies to .kok-ticket-players-stage
+   inside it — pin target and moving target are deliberately different
+   elements. */
+.kok-ticket-players-pin-shell { position:relative; }
+
+/* Common pin stage: the visible TICKET panel, the fixed gap below it, the
+   PLAYERS heading, and the card area are all children of this one element,
+   so it (inside the pin shell above) can move as a single on-screen
+   composition — TICKET's panel and PLAYERS' heading never drift apart
+   during the animation, only together. */
+.kok-ticket-players-stage { position:relative; display:flex; flex-direction:column; }
+/* Reuses the same --kok-section-gap every other category boundary uses
+   (measured: RULES card bottom -> ABOUT heading is 175px desktop / 66.5px
+   mobile, identical to var(--kok-section-gap)'s rendered value at each
+   breakpoint) — TICKET panel bottom -> PLAYERS heading now matches that
+   standard instead of a one-off value. */
+.kok-ticket-players-stage .kok-ticket-panel { margin-bottom:var(--kok-section-gap); }
+/* Heading-to-card-area spacing is controlled in exactly one place: this
+   margin-top on .team-info__body. The heading's own bottom margin is
+   suppressed to 0 here so the two never stack into a double gap. This
+   governs the *final*, normal-layout position of the whole card grid (top
+   row included) — not just the initial gathered pose, which is a JS
+   transform offset computed separately (see PlayersScrollReveal.tsx's
+   headingGap) but tuned to read consistently with this same distance. */
+.kok-ticket-players-stage .kok-section-heading { margin-bottom:0!important; }
+.kok-ticket-players-stage .team-info__body { margin-top:var(--kok-players-heading-card-gap); }
+/* Second half of the PLAYERS -> RULES gap fix (see
+   .kok-main .team's padding-bottom above and PlayersScrollReveal.tsx's
+   recomputeStageShiftY()): the stage's persistent shift can exceed the
+   standard gap's own size, so padding-bottom alone (which can't go below
+   0) isn't always enough to fully cancel it. Whatever's left over after
+   zeroing that padding gets pulled from here instead — a small negative
+   margin-bottom on the stage's own last child, still entirely inside the
+   PLAYERS section itself, not on the pin-spacer and not on RULES. 0 (the
+   default) when the shift already fits inside the standard gap's own
+   size, as it does on most viewports. */
+.kok-ticket-players-stage .team-info__body { margin-bottom:calc(-1 * var(--kok-players-shift-overflow, 0px)); }
+
+.kok-main .about .itemWrap .item .table .indent {
+  margin:0 0 .45rem!important;
+  line-height:1.4!important;
+}
+.kok-main .about .itemWrap .item .table .indent:last-child { margin-bottom:0!important; }
+
+@media screen and (max-width:767px) {
+  .kok-rule-board { padding:3.2rem 1rem!important; }
+  .kok-rule-intro { padding:0 .5rem; }
+  .kok-rule-intro>span { font-size:.68rem; }
+  .kok-rule-intro h3 { margin-top:.9rem; font-size:1.5rem; }
+  .kok-rule-intro p { margin-top:1rem; font-size:.82rem!important; line-height:1.7; }
+  .kok-rule-details { margin-top:1.5rem; }
+  .kok-rule-details summary { grid-template-columns:2rem 1fr 1rem; gap:.55rem; min-height:4.5rem; padding:.8rem .9rem; }
+  .kok-rule-details summary>span { font-size:.95rem; }
+  .kok-rule-details summary>strong { font-size:.95rem; line-height:1.35; }
+  .kok-rule-details summary>small { display:none; }
+  .kok-rule-detail-body { padding:1.25rem 1rem 1.5rem; font-size:.8rem; }
+  .kok-rule-detail-body ul,.kok-rule-detail-body ol { gap:.65rem; padding-left:1.15rem; }
+  .kok-judge-grid,.kok-conduct-grid { grid-template-columns:1fr; gap:.7rem; padding:1rem; }
+  .kok-judge-grid article,.kok-conduct-grid article { padding:1.1rem; }
+  .kok-score-scale { grid-template-columns:repeat(3,minmax(0,1fr)); margin-bottom:1.25rem; }
+  .kok-score-scale span { border-bottom:1px solid #e7ba3740; }
+  .kok-score-scale span:nth-child(3) { border-right:0; }
+  .kok-score-scale span:nth-child(n+4) { border-bottom:0; }
+  .kok-player figure:before { opacity:0; }
+  .kok-player:hover figure:before { opacity:.38; }
+}
+
+/* Single-event hero */
+.kok-main .top {
+  display:flex;
+  align-items:center;
+  min-height:calc(100svh - 6.2rem);
+  padding:clamp(4.5rem,7vw,8rem) 0!important;
+}
+.kok-main .top .inner { width:100%; }
+.kok-single-hero {
+  position:relative;
+  z-index:4;
+  display:grid;
+  justify-items:center;
+  width:min(92%,72rem);
+  margin:0 auto;
+  padding:clamp(2rem,3.5vw,4rem) clamp(1rem,4vw,4rem);
+  text-align:center;
+}
+.kok-single-hero:before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:5% 4%;
+  background:radial-gradient(ellipse at center,#000a 0,#0007 42%,transparent 72%);
+  pointer-events:none;
+}
+.kok-main .top h1.kok-single-hero-title {
+  position:static!important;
+  inset:auto!important;
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  margin:clamp(1rem,2vw,2rem) 0 0!important;
+  padding:0!important;
+  transform:none!important;
+}
+.kok-single-hero-title picture { display:block; }
+.kok-main .top .kok-single-hero-title img {
+  display:block;
+  width:clamp(17rem,26vw,31rem);
+  max-height:50vh;
+  height:auto;
+  margin:0 auto;
+  object-fit:contain;
+  filter:drop-shadow(0 1.2rem 2.5rem #000b);
+}
+.kok-main section .kok-single-hero-kicker {
+  color:#fff;
+  font:400 clamp(.72rem,.85vw,1rem)/1 "Bebas Neue",Anton,sans-serif;
+  letter-spacing:.32em;
+  text-shadow:0 .2rem .8rem #000;
+}
+.kok-single-hero-prize {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  width:clamp(26rem,48vw,54rem);
+  min-height:clamp(10rem,19vw,14rem);
+  margin-top:clamp(1.2rem,2vw,2.2rem);
+  isolation:isolate;
+}
+.kok-single-hero-prize:before,
+.kok-single-hero-prize:after {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:0;
+  width:23%;
+  height:100%;
+  background-image:url("/assets/img/final/prize.png");
+  background-repeat:no-repeat;
+  background-size:auto 100%;
+  filter:drop-shadow(0 .25rem .65rem #000);
+}
+.kok-single-hero-prize:before {
+  left:0;
+  background-position:left center;
+}
+.kok-single-hero-prize:after {
+  right:0;
+  background-position:right center;
+}
+.kok-single-hero-prize span {
+  color:#fff;
+  font:700 clamp(1rem,1.6vw,1.6rem)/1 source-hans-japanese,sans-serif;
+  letter-spacing:.12em;
+  text-shadow:0 .2rem .75rem #000;
+}
+.kok-single-hero-prize strong {
+  margin-top:.7rem;
+  color:#fff;
+  font:400 clamp(3.4rem,6.2vw,7rem)/.82 "Bebas Neue",Anton,sans-serif;
+  letter-spacing:.035em;
+  text-shadow:0 0 .12em #fff,0 .35rem 1.4rem #000;
+}
+.kok-single-hero-prize small {
+  margin-right:.15em;
+  color:#fff;
+  font-size:.42em;
+  vertical-align:.55em;
+}
+.kok-single-hero-meta {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(1rem,2vw,2rem);
+  margin-top:clamp(1.2rem,2vw,2rem);
+  color:#fff;
+  font:400 clamp(.85rem,1.2vw,1.35rem)/1 "Bebas Neue",Anton,sans-serif;
+  letter-spacing:.17em;
+}
+.kok-single-hero-meta i {
+  width:1px;
+  height:1.3rem;
+  background:var(--kok-gold);
+}
+.kok-main section .kok-single-hero-presented {
+  display:flex;
+  align-items:baseline;
+  gap:.75rem;
+  margin-top:1.4rem;
+  color:#b9a77c;
+  font:400 clamp(.62rem,.7vw,.8rem)/1 "Bebas Neue",Anton,sans-serif;
+  letter-spacing:.22em;
+}
+.kok-single-hero-presented strong {
+  color:#fff;
+  font:700 clamp(1.2rem,1.8vw,2rem)/1 Arial,sans-serif;
+  letter-spacing:-.06em;
+}
+.kok-single-hero-presented sup { font-size:.3em; vertical-align:top; }
+
+@media screen and (max-width:767px) {
+  .kok-main .top {
+    min-height:calc(100svh - 5.8rem);
+    padding:clamp(3.5rem,12vw,5.5rem) 0 clamp(4.5rem,15vw,7rem)!important;
+  }
+  .kok-single-hero { width:94%; padding:1rem .75rem; }
+  .kok-main .top .kok-single-hero-title img { width:min(62vw,19rem); max-height:43vh; }
+  .kok-single-hero-prize { width:min(96vw,30rem); min-height:clamp(8rem,36vw,11rem); margin-top:1rem; }
+  .kok-single-hero-prize:before,.kok-single-hero-prize:after { width:24%; }
+  .kok-single-hero-prize span { font-size:.85rem; }
+  .kok-single-hero-prize strong { font-size:clamp(2.7rem,12vw,4rem); }
+  .kok-single-hero-meta { flex-wrap:wrap; gap:.7rem 1rem; font-size:.82rem; letter-spacing:.12em; }
+  .kok-single-hero-meta i { height:1rem; }
+  .kok-main section .kok-single-hero-presented { margin-top:1.1rem; font-size:.58rem; }
+  .kok-single-hero-presented strong { font-size:1.15rem; }
+  .kok-judge-grid b { font-size:1.25rem; }
+  .videoBg {
+    background:#000 url("/assets/img/final/bg_gf.jpg") center center/cover no-repeat!important;
+  }
+  .videoBg:before { opacity:.52!important; }
+  .videoBg video { display:none!important; }
+}
