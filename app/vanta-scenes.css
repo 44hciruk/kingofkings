@@ -574,3 +574,93 @@
 @media screen and (max-width: 767px) {
   .v-detail { padding: 5rem 1.25rem 6rem; }
 }
+
+/* ============================================================
+   SiteFooter — oversized atmospheric wordmark + sponsors/socials
+   ============================================================ */
+.v-footer {
+  /* z-index:1 matches the legacy .kok-main section rule every v-* scene
+     section already gets for free — footer is a <footer>, not a <section>
+     inside .kok-main, so without this its own opaque background loses
+     stacking order to the trailing fixed .videoBg and the photo bleeds
+     through behind the sponsor grid. */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: #000;
+  padding-top: 6rem;
+}
+.v-footer__wordmark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .07;
+  line-height: .8;
+}
+.v-footer__wordmark span {
+  display: block;
+  white-space: nowrap;
+  color: #fff;
+  font: 400 clamp(4rem, 14vw, 13rem)/.8 "Big Noodle Titling", Anton, sans-serif;
+  letter-spacing: -.01em;
+  text-align: center;
+}
+.v-footer__content { position: relative; z-index: 1; }
+
+.v-footer__sponsors { padding: 0 1.5rem 5rem; text-align: center; }
+.v-footer__sponsors h2 {
+  color: #fff;
+  font: 400 clamp(1.6rem, 4vw, 2.4rem)/1 "Big Noodle Titling", Anton, sans-serif;
+  letter-spacing: .04em;
+  margin: 0;
+}
+.v-footer__sponsors > p { color: var(--kok-gold); font: 400 .85rem/1 source-hans-japanese, sans-serif; margin: .5rem 0 3rem; }
+.v-footer__sponsor-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 64rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 1rem;
+}
+.v-footer__sponsor-placeholder {
+  margin: 0;
+  padding: 1.4rem .75rem;
+  border: 1px dashed #ffffff2e;
+  border-radius: .4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .25rem;
+  color: #6f6a60;
+}
+.v-footer__sponsor-placeholder small { font: 400 .6rem/1 Anton, sans-serif; letter-spacing: .1em; }
+.v-footer__sponsor-placeholder strong { font: 400 1.3rem/1 Anton, sans-serif; color: #9c968a; }
+.v-footer__sponsor-placeholder span { font: 400 .6rem/1 Anton, sans-serif; letter-spacing: .1em; }
+
+.v-footer__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 3rem 1.5rem 4rem;
+  border-top: 1px solid #ffffff1a;
+}
+.v-footer__socials { display: flex; gap: 1.25rem; }
+.v-footer__socials img { width: 2rem; height: 2rem; opacity: .85; }
+.v-footer__links { display: flex; align-items: center; gap: .75rem; color: #8e8a80; font: 400 .78rem/1 source-hans-japanese, sans-serif; }
+.v-footer__links i { opacity: .5; font-style: normal; }
+.v-footer__mowl { display: flex; flex-direction: column; align-items: center; gap: .4rem; }
+.v-footer__mowl img { width: 5rem; height: auto; opacity: .8; }
+.v-footer__mowl small { color: #6f6a60; font: 400 .72rem/1 sans-serif; letter-spacing: .05em; }
+.v-footer__copyright { color: #55524a; font: 400 .72rem/1 sans-serif; letter-spacing: .04em; }
+
+@media screen and (max-width: 767px) {
+  .v-footer { padding-top: 4rem; }
+  .v-footer__sponsors { padding-bottom: 3.5rem; }
+}
